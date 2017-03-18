@@ -7,7 +7,32 @@ Index | {{ super() }}
 
 {% block content %}
 <div class="container">
-  Hola Hola
-</div>
+  <h1>Listado de videojuegos</h1>
+   {% include "_modules/paginaLista.html" %}
+  
 
+  <div class="jumbotron">
+    <div class="row">
+      {% for videojuego in videojuegos.items %}
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <a href="" class="">
+            {% if videojuego.picture %}
+              <img src="{{videojuego.picture}}" alt="imagen" style="height:100px; width:100%;">
+            {% endif %}
+          </a>
+          <div class="caption">
+            <a href="" class="">
+              <h4>{{videojuego.titulo}}</h4>
+              
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+   {% include "_modules/paginaLista.html" %}
+ 
+</div>
 {% endblock %}

@@ -1,7 +1,7 @@
 CREATE database IF NOT EXISTS proySoftware;
 	use proySoftware;
-	
-CREATE TABLE IF NOT EXISTS usaurio(
+
+CREATE TABLE IF NOT EXISTS usuario(
 	id int unsigned AUTO_INCREMENT PRIMARY key,
 	nick varchar(60) NOT null,
 	contrasena varchar(300) NOT null,
@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS analisis(
 	index(id_usuario),
 	foreign key (id_usuario) references usuario (id)
 		on delete cascade on update no action	
+	
 );
 
 CREATE TABLE IF NOT EXISTS plataforma(

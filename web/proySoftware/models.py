@@ -1,42 +1,45 @@
-from proySoftware import bbdd
+from proySoftware import db
 
-bbdd.Model.metadata.reflect(bbdd.engine)
 
-class Usuario(bbdd.Model):
-  __table__ = bbdd.Model.metadata.tables['usuario']
+db.Model.metadata.reflect(db.engine)
+
+class Usuario(db.Model):
+  __table__ = db.Model.metadata.tables['usuario']
+
+
   
-class Videojuego(bbdd.Model):
-  __table__ = bbdd.Model.metadata.tables['videojuego']
+class Videojuego(db.Model):
+  __table__ = db.Model.metadata.tables['videojuego']
 
-class Acciones(bbdd.Model):
-  __table__ = bbdd.Model.metadata.tables['acciones']
+class Acciones(db.Model):
+  __table__ = db.Model.metadata.tables['acciones']
   
-class Analisis(bbdd.Model):
-  __table__ = bbdd.Model.metadata.tables['analisis']
+class Analisis(db.Model):
+  __table__ = db.Model.metadata.tables['analisis']
 
-class Desarrolladora(bbdd.Model):
-  __table__ = bbdd.Model.metadata.tables['desarrolladora']
+class Desarrolladora(db.Model):
+  __table__ = db.Model.metadata.tables['desarrolladora']
 
-class DesarrolladoraVideojuego(bbdd.Model):
-  __table__ = bbdd.Model.metadata.tables['desarrolladora_videojuego']  
+class DesarrolladoraVideojuego(db.Model):
+  __table__ = db.Model.metadata.tables['desarrolladora_videojuego']  
   
-class Genero(bbdd.Model):
-  __table__ = bbdd.Model.metadata.tables['genero']  
+class Genero(db.Model):
+  __table__ = db.Model.metadata.tables['genero']  
   
-class GeneroVideojuego(bbdd.Model):
-  __table__ = bbdd.Model.metadata.tables['genero_videojuego']  
+class GeneroVideojuego(db.Model):
+  __table__ = db.Model.metadata.tables['genero_videojuego']  
 
-class Imagen(bbdd.Model):
-  __table__ = bbdd.Model.metadata.tables['imagen']
+class Imagen(db.Model):
+  __table__ = db.Model.metadata.tables['imagen']
 
-class ImagenVideojuego(bbdd.Model):
-  __table__ = bbdd.Model.metadata.tables['imagen_videojuego']
+class ImagenVideojuego(db.Model):
+  __table__ = db.Model.metadata.tables['imagen_videojuego']
 
-class UsuarioVideojuego(bbdd.Model):
-  __table__ = bbdd.Model.metadata.tables['usuario_videojuego']
+class UsuarioVideojuego(db.Model):
+  __table__ = db.Model.metadata.tables['usuario_videojuego']
   
-class Comentario(bbdd.Model):
-  __table__ = bbdd.Model.metadata.tables['comentario']
+class Comentario(db.Model):
+  __table__ = db.Model.metadata.tables['comentario']
  
 
 
