@@ -8,7 +8,12 @@
     <p class="navbar-text">VideojuegosDB</p>
     <div class="navbar-right">
 <div class="btn-group" role="group">
-  <a href="{{ url_for('perfilUsuario') }}" class="btn btn-default navbar-btn glyphicon glyphicon-user">Perfil</a>
+  {% if session.nick %}
+        <a href="{{ url_for('perfilUsuario') }}" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Perfil</a>
+        <a href="{{ url_for('loggout') }}" class="btn btn-default navbar-btn glyphicon glyphicon-logout"> logout</a>
+   {% else %}
+        <a href="{{ url_for('login') }}" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Login</a>
+  {% endif %}
 </div>
   </div>
   <div class="navbar-right">

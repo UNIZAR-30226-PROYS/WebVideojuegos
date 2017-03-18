@@ -1,0 +1,66 @@
+{% extends "_layouts/base.html" %}
+
+{% block title %}
+Registro Login | {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+				<div class="row">
+					<!--inicio login-->
+					<div class=" col-md-6">
+						<div class="jumbotron">
+							<h3 class="panel-heading"><strong>Login</strong></h3>
+							<form name="login" method="POST" action="{{ url_for( 'login' ) }}">
+								<div class="form-group">
+									{{ loginForm.nick(class="form-control", id="userLogin_nick", value=saves.get('nick', ''), required="required", placeholder="Nick",  type="text") }}
+								</div>
+								<div class="form-group">
+									{{ loginForm.password(class="form-control", id="userLogin_password", value=saves.get('password', ''), required="required", placeholder="Contraseña", type="password") }}
+								</div>
+								<div class="row btn btn-block center-block">
+									<div class="col-md-2 col-md-offset-3">
+										<button id="userLogin_login" class="btn btn-primary" name="userLogin[login]" type="submit">Entrar</button>
+									</div>
+									<div class="col-md-2">
+										<button  id="userLogin_restablecer" class="btn btn-primary" name="userLogin[restrablecer]" type="reset">Restablecer</button>
+									</div>
+
+								</div>
+							</form>
+
+						</div>
+					</div>
+					<!--fin login-->
+
+					<!--inicio registro-->
+					<div class="col-md-6 ">
+						<div class="jumbotron">
+							<h3 class="panel-heading"><strong>Registro</strong></h3>
+							<form name="registro" method="POST" action="{{ url_for( 'registro' ) }}">
+								<div>
+									<div class="form-group">
+										{{ registroForm.nick(class="form-control", id="userLogin_nick", value=saves.get('nick', ''), required="required", placeholder="Nick",  type="text") }}
+									</div>
+									<div class="form-group">
+										{{ registroForm.sexo(class="form-control", id="userLogin_sexo", value=saves.get('sexo', ''), required="required", placeholder="Sexo", type="text") }}
+									</div>
+									<div class="form-group">
+										{{ registroForm.password(class="form-control", id="userLogin_password", value=saves.get('password', ''), required="required", placeholder="Contraseña", type="password") }}
+									</div>
+                  
+								</div>
+								<div class="row btn btn-block center-block">
+									<div class="col-md-3 col-md-offset-3">
+										<button id="userRegistro_registro" class="btn btn-primary" name="userRegistro[registro]" type="submit" >Registrarse</button>
+									</div>
+									<div class="col-md-2">
+										<button id="userRegistro_restablecer" class="btn btn-primary" name="userRegistro[restrablecer]" type="reset">Restablecer</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+</div>
+{% endblock %}
