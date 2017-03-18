@@ -138,5 +138,9 @@ CREATE TABLE IF NOT EXISTS comentario(
 	id_analisis int unsigned,
 	index (id_analisis),
 	foreign key (id_analisis) references analisis (id) 
-		on delete cascade on update no action
+		on delete cascade on update no action,
+	id_usuario int unsigned,
+	index(id_usuario),
+	foreign key (id_usuario) references usuario (id)
+		on delete cascade on update no action	
 );
