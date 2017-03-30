@@ -34,9 +34,10 @@ Antes del 21 de abril
 
 ### Página de login y registro: 10 horas
 Antes del 21 de abril
-* [ ] crear módulo html: 1hora
-* [ ] crear routers(GET y POST): 2horas
-* [ ] crear formularios: 3 horas
+* [x] crear módulo html: 1hora
+* [x] crear routers(GET y POST): 2horas
+* [x] crear formularios: 3 horas
+* [ ] posible ampliación posterior de formulario de registro
 * [x] implementar manejo de cookies de session: 4horas
 
 ### Usuarios
@@ -60,4 +61,4 @@ Antes del 19 de mayo
 * [ ] crear routers(GET): 1hora
 * [ ] implementar búsqueda de usuarios: 6horas
 
-##### Total: 87.5horas
+##### Total: 87.5horas + otras
