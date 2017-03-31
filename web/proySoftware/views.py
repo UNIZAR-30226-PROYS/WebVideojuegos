@@ -18,7 +18,7 @@ from controladores.registro import *
  #     videojuego.picture = picture
     
 @app.route('/')
-@app.route('/<int:page>')
+@app.route('/<int:page>', methods=['GET'])
 def index(page=1):
     lista = Videojuego.query.paginate(page, 20, False)
     for videojuego in lista.items:
