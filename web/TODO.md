@@ -15,30 +15,29 @@ Antes del 15 de marzo
 
 ### Videojuegos
 ##### Crear página del listado de videojuegos: 16horas
- Antes del 30 de marzo
-* [x] crear módulo html: 1horas 
-* [x] crear routers(GET y POST): 2horas
-* [ ] crear formularios: 1hora
+
+* [x] crear módulo html: 1horas  Antes del 30 de marzo
+* [x] crear routers(GET y POST): 2horas  Antes del 30 de marzo
+* [x] crear formularios: 1hora Antes del 30 de marzo
 * [ ] implementar funcionalidad de ordenación(por título, plataforma o género): 6horas
 * [ ] implementar funcionalidad de búsqueda(por título, plataforma o género): 6horas
 
 ##### Crear página de detalles de videojuego: 18horas
 
-Antes del 21 de abril
-* [ ] crear módulo html: 1hora
-* [ ] crear routers(GET y POST): 2hora 
-* [ ] implementar funcionalidad de análisis: 5horas
-* [ ] implementar calificaciones: 3horas
-* [ ] implementar comentarios: 4horas
+* [ ] crear módulo html: 1hora Antes del 21 de abril
+* [ ] crear routers(GET y POST): 2hora Antes del 21 de abril
+* [ ] implementar funcionalidad de análisis: 5horas Antes del 21 de abril
+* [ ] implementar calificaciones: 3horas Antes del 21 de abril
+* [ ] implementar comentarios: 4horas Antes del 21 de abril
 * [ ] implementar funcionalidad jugado/deseado: 3horas
 
 ### Página de login y registro: 10 horas
-Antes del 21 de abril
-* [x] crear módulo html: 1hora
-* [x] crear routers(GET y POST): 2horas
-* [x] crear formularios: 3 horas
+
+* [x] crear módulo html: 1hora Antes del 21 de abril
+* [x] crear routers(GET y POST): 2horas Antes del 21 de abril
+* [x] crear formularios: 3 horas Antes del 21 de abril
 * [ ] posible ampliación posterior de formulario de registro
-* [x] implementar manejo de cookies de session: 4horas
+* [x] implementar manejo de cookies de session: 4horas Antes del 21 de abril
 
 ### Usuarios
 ##### Perfil Privado: 8,5horas
