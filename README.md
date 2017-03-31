@@ -14,7 +14,7 @@ El proyecto permite publicar a los usuarios un registro de los videojuegos que h
  
 #### Tablas y Campos Base de datos
 Consultar: 
-[BasedeDatos]:(https://github.com/UNIZAR-30226-2017-05/WebVideojuegos/blob/master/otros/extras/BasedeDatos.md)
+[BasedeDatos](https://github.com/UNIZAR-30226-2017-05/WebVideojuegos/blob/master/otros/extras/BasedeDatos.md)
 
 ## Estado actual
 Para consultar el estado del proyecto consultar el:
