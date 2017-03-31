@@ -11,6 +11,10 @@ El proyecto permite publicar a los usuarios un registro de los videojuegos que h
 
 #### Estructura routes-views
  ![Routes-Views](https://github.com/UNIZAR-30226-2017-05/WebVideojuegos/blob/master/otros/img/route-view.jpg?raw=true)
+ 
+#### Tablas y Campos Base de datos
+Consultar: 
+[BasedeDatos]:(https://github.com/UNIZAR-30226-2017-05/WebVideojuegos/blob/master/otros/extras/BasedeDatos.md)
 
 ## Estado actual
 Para consultar el estado del proyecto consultar el:
