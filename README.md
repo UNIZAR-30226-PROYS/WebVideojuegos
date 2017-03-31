@@ -2,7 +2,7 @@
 
 ## Sobre el Proyecto
 
-Un amplio abanico de usuarios, tanto expertos como no expertos, sienten la necesidad de publicar un registro atractivo y accesible en la Web de los videojuegos que han probado con las opiniones y la calificación que creen que estos videojuegos merecen. De este modo, por una parte, sus conocidos pueden enterarse de los videojuegos que han probado e interpretar las opiniones favorables como recomendaciones; y, por otra, los usuarios en general pueden conocer la opinión y el interés que despierta cierto videojuego en quienes ya lo han probado. Los usuarios pueden, así, descubrir nuevos videojuegos interesantes y, en función de la opinión del resto de gente, tanto anónima como conocida, decidir si jugarlos o no.
+El proyecto permite publicar a los usuarios un registro de los videojuegos que han probado con las opiniones y la calificación que creen que estos videojuegos merecen. De este modo, por una parte, sus conocidos pueden enterarse de los videojuegos que han probado e interpretar las opiniones favorables como recomendaciones; y, por otra, los usuarios en general pueden conocer la opinión y el interés que despierta cierto videojuego en quienes ya lo han probado. Los usuarios pueden, así, descubrir nuevos videojuegos interesantes y, en función de la opinión del resto de gente, tanto anónima como conocida, decidir si jugarlos o no.
 
 
 ## Diagramas
