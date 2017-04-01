@@ -47,15 +47,15 @@ Index | {{ super() }}
       {% for videojuego in videojuegos.items %}
       <div class="col-md-3">
         <div class="thumbnail">
-          <a href="" class="">
+          <a href="{{ url_for('details',name=videojuego.titulo, pk=videojuego.id) }}" class="">
             {% if videojuego.picture %}
               <img src="{{videojuego.picture}}" alt="imagen" style="height:100px; width:100%;">
             {% endif %}
           </a>
           <div class="caption">
-            <a href="" class="">
-              <h4>{{videojuego.titulo}}</h4>
-              
+            <a href="{{ url_for('details',name=videojuego.titulo, pk=videojuego.id) }}" class="">
+-              <h4><span class="label label-primary">{{videojuego.titulo}}</span></h4>
+-              Puntuación: {{videojuego.puntnMedia}}
             </a>
           </div>
         </div>
