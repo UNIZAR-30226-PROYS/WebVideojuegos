@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -14,7 +16,5 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://software:software@localhost/pro
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-#@app.route('/')
-#def index():
-#    return 'Hola'
+
 import proySoftware.views

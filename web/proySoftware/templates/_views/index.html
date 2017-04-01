@@ -23,8 +23,8 @@ Index | {{ super() }}
           </a>
           <div class="caption">
             <a href="{{ url_for('details',name=videojuego.titulo, pk=videojuego.id) }}" class="">
-              <h4>{{videojuego.titulo}}</h4>
-              
+              <h4><span class="label label-primary">{{videojuego.titulo}}</span></h4>
+              Puntuación: {{videojuego.puntnMedia}}
             </a>
           </div>
         </div>
