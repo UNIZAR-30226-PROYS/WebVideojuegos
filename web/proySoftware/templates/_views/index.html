@@ -10,21 +10,52 @@ Index | {{ super() }}
   <h1>Listado de videojuegos</h1>
    {% include "_modules/paginaLista.html" %}
   
+  <nav class="navbar navbar-default" role="navigation">
+  <!-- El logotipo y el icono que despliega el menú se agrupan
+       para mostrarlos mejor en los dispositivos móviles -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Desplegar navegación</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+ 
+  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+       otro elemento que se pueda ocultar al minimizar la barra -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Tipo ordenacion <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Ordenacion 1</a></li>
+          <li><a href="#">Ordenacion 2</a></li>
+          <li><a href="#">Ordenacion 3</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+  
 
   <div class="jumbotron">
     <div class="row">
       {% for videojuego in videojuegos.items %}
       <div class="col-md-3">
         <div class="thumbnail">
-          <a href="{{ url_for('details',name=videojuego.titulo, pk=videojuego.id) }}" class="">
+          <a href="" class="">
             {% if videojuego.picture %}
               <img src="{{videojuego.picture}}" alt="imagen" style="height:100px; width:100%;">
             {% endif %}
           </a>
           <div class="caption">
-            <a href="{{ url_for('details',name=videojuego.titulo, pk=videojuego.id) }}" class="">
-              <h4><span class="label label-primary">{{videojuego.titulo}}</span></h4>
-              Puntuación: {{videojuego.puntnMedia}}
+            <a href="" class="">
+              <h4>{{videojuego.titulo}}</h4>
+              
             </a>
           </div>
         </div>
