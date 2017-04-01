@@ -1,0 +1,117 @@
+{% extends "_layouts/base.html" %}
+
+{% block title %}
+{{videojuego.titulo}} | {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+<!--detalles de un videojuego-->
+<div class="container">
+  <!--pequeña descripcion-->
+  <div class="jumbotron">
+    <div class="container">
+			<div class="row">
+				<!--imagen de un videojuego-->
+				<div class="col-md-3">
+					<div class="thumbnail">
+						<img src="{{cover}}" alt="{{videojuego.titulo}}" style="width:100%;">
+					</div>
+				</div>
+				<!--fin imagen de un videojuego-->
+				<!--caracteristicas-->
+					<div class="col-md-9 row">
+						<div class="col-md-4">
+							<h3>
+								<span class="label label-primary">{{videojuego.titulo}}</span>
+							</h3>
+						 </div>
+						 <div class="col-md-4">
+							 <h3>
+								 puntuacion x
+							 </h3>
+						 </div>
+						 <div class="col-md-4">
+							 
+								<form name="analis" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
+									<div class="form-group row ">	
+										<div class="col-md-4">
+											{{ analisForm.analisis(class="form-control", id="user_puntuacion", value='', required="required", placeholder="100",  type="text") }}
+										</div>
+										<button id="user_puntuacion" class="btn btn-primary" name="userPuntuacion[puntuacion]" type="submit" >Analisar</button>
+												
+									</div>
+
+								</form>
+							
+						 </div>
+					</div>
+					<div class="col-md-9 row">
+						<div class="col-md-4">
+							<h3>
+								Plataformas
+							</h3>
+						 </div>
+						 <div class="col-md-4">
+							 <h3>
+								 Desarrolladora
+							 </h3>
+						 </div>
+						 <div class="col-md-4">
+							 <h3>
+									Géneros
+							 </h3>
+						 </div>
+					</div>
+				</div>
+        <!--fin caracteristicas-->
+
+      </div>
+    </div>
+  
+  
+	<h3>Análisis</h3>
+  <hr>
+	<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Usuario x</h3>
+  </div>
+  <div class="panel-body">
+		<div>
+			<p>
+				sadkljaslkdjaksjdlajsld  kljas sadkljaslkdj dlajsl aksjdlajsld dlajsl sadkljaslkdjaksjdlajsld  kljas sadkljaslkdj dlajsl aksjdlajsld dlajsl sadkljaslkdjaksjdlajsld  kljas sadkljaslkdj dlajsl aksjdlajsld dlajsl
+			</p>
+		</div>
+		<div class="container">
+		<form name="analis" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
+			<div class="form-group row ">	
+				<div class="col-md-10">
+				{{ analisForm.analisis(class="form-control", id="user_comentario", value='', required="required", placeholder="Escribir un comentario",  type="text") }}
+				</div>	
+				<div class="col-md-2">
+					<button id="user_comentario" class="btn btn-primary" name="userComentario[comentario]" type="submit" >Comentar</button>
+				</div>			
+			</div>
+			
+		</form>
+	</div>
+  </div>
+	
+	</div>
+	<div class="container">
+		<form name="analis" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
+			<div class="form-group row ">	
+				<div class="col-md-10">
+				{{ analisForm.analisis(class="form-control", id="user_analisis", value='', required="required", placeholder="Escribir un analisis",  type="text") }}
+				</div>	
+				<div class="col-md-2">
+					<button id="user_analisis" class="btn btn-primary" name="userAnalisis[analisis]" type="submit" >Analisar</button>
+				</div>			
+			</div>
+			
+		</form>
+	</div>
+ 
+</div>
+<!--fin detalles de un videojuego-->
+{% endblock %}

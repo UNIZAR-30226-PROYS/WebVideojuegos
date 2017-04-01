@@ -67,7 +67,7 @@ def get_videogame_cover(pk):
     """
     Parámetros: id de un videojuego
     Función: retorna un string perteneciente a la url de la imagen o [] vacio
-    """
+    """ 
     picture = Imagen.query.filter(
             ImagenVideojuego.id_videojuego == pk,
             ImagenVideojuego.id_imagen == Imagen.id).first()

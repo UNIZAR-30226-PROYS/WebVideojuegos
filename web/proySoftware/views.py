@@ -11,6 +11,7 @@ from flask import url_for
 from controladores.perfilUsuario import *
 from controladores.login import *
 from controladores.registro import *
+from controladores.detalle import *
 
 # def insert_atributes(videojuego):
  #   picture = get_product_cover(videojuego.id)
