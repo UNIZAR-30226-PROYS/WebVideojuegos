@@ -33,12 +33,12 @@
 						 </div>
 						 <div class="col-md-4">
 							 
-								<form name="analis" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
+								<form name="puntuacion" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
 									<div class="form-group row ">	
 										<div class="col-md-4">
 											{{ analisForm.analisis(class="form-control", id="user_puntuacion", value='', required="required", placeholder="100",  type="text") }}
 										</div>
-										<button id="user_puntuacion" class="btn btn-primary" name="userPuntuacion[puntuacion]" type="submit" >Analisar</button>
+										<button id="user_puntuacion" class="btn btn-success" name="userPuntuacion[puntuacion]" type="submit" >Analisar</button>
 												
 									</div>
 
@@ -63,9 +63,21 @@
 							 </h3>
 						 </div>
 					</div>
+					<div class="col-md-9 row col-md-offset-10">
+						<form name="jugado" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
+								
+								<button id="user_jugado" class="btn btn-success" name="userJugado[jugado]" type="submit" >Jugado</button
+							
+						</form>
+						<form name="deseado" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
+								
+								<button id="user_deseado" class="btn btn-success" name="userDeseado[deseado]" type="submit" >Deseado</button
+						
+						</form>
+					</div>
 				</div>
         <!--fin caracteristicas-->
-
+				
       </div>
     </div>
   
@@ -83,7 +95,7 @@
 			</p>
 		</div>
 		<div class="container">
-		<form name="analis" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
+		<form name="comentario" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
 			<div class="form-group row ">	
 				<div class="col-md-10">
 				{{ analisForm.analisis(class="form-control", id="user_comentario", value='', required="required", placeholder="Escribir un comentario",  type="text") }}
@@ -99,7 +111,7 @@
 	
 	</div>
 	<div class="container">
-		<form name="analis" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
+		<form name="analisis" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
 			<div class="form-group row ">	
 				<div class="col-md-10">
 				{{ analisForm.analisis(class="form-control", id="user_analisis", value='', required="required", placeholder="Escribir un analisis",  type="text") }}
