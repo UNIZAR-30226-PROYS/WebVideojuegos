@@ -78,13 +78,12 @@ def detalles(name, pk):
 			id = get_user_id()
 			texto = formulario.data['analisis']
 			if texto == '':
-				print "asdsda"
-				comentar(name, pk)
+				response = comentar(name, pk)
 			else :
 				#crear nuevo analisis en bd
 				insertar_analisis(id, pk, texto)
 				flash('Enviado', 'success')
-			response = make_response(redirect(url_for('details', name=name, pk=pk)))
+				response = make_response(redirect(url_for('details', name=name, pk=pk)))
 		else :
 			flash('Login requerido', 'danger')
 			response = make_response(redirect(url_for('details', name=name, pk=pk)))

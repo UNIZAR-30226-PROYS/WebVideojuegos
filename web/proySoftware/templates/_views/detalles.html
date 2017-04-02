@@ -34,10 +34,10 @@
 						 </div>
 						 <div class="col-md-4">
 							 
-								<form name="puntuacion" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
+								<form name="puntuacion" method="GET" action="">
 									<div class="form-group row ">	
 										<div class="col-md-4">
-											{{ analisForm.analisis(class="form-control", id="user_puntuacion", required="required", placeholder="10",  type="text") }}
+											{{ analisForm.analisis(class="form-control", id="user_puntuacion", required="required", placeholder="10", type="text") }}
 										</div>
 										<button id="user_puntuacion" class="btn btn-success" name="userPuntuacion[puntuacion]" type="submit" >Analisar</button>
 												
@@ -65,15 +65,15 @@
 						 </div>
 					</div>
 					<div class="col-md-9 row col-md-offset-10">
-						<form name="jugado" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
-								
-								<button id="user_jugado" class="btn btn-success" name="userJugado[jugado]" type="submit" >Jugado</button
-							
+						<form name="jugado" method="GET" action="">
+								<div class="form-group row ">	
+								<button id="user_jugado" class="btn btn-success" name="userJugado[jugado]" type="submit" >Jugado</button>
+								</div>
 						</form>
-						<form name="deseado" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
-								
-								<button id="user_deseado" class="btn btn-success" name="userDeseado[deseado]" type="submit" >Deseado</button
-						
+						<form name="deseado" method="POST" action="">
+								<div class="form-group row ">	
+								<button id="user_deseado" class="btn btn-success" name="userDeseado[deseado]" type="submit" >Deseado</button>
+								</div>
 						</form>
 					</div>
 				</div>
@@ -81,8 +81,8 @@
 				
       </div>
     </div>
-  
-  
+</div>
+<div class="container">  
 	<h3>Análisis</h3>
   <hr>
 	<div class="panel panel-default">
@@ -96,9 +96,9 @@
 				{{ obj.analisis }}
 			</p>
 				<ul class="list-group">
+					<h4>Comentarios</h4>
 					{% for coment in obj.coments %}
 					<li class="list-group-item">
-						<span class="badge">14</span>
 							{{ coment.comentario }}
 					</li>
 					{% endfor %}
