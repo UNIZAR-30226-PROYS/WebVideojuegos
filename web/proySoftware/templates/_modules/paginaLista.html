@@ -11,7 +11,11 @@
     {% for page in videojuegos.iter_pages() %}
     {% if page %}
     <li class="{% if page == videojuegos.page %}active{% endif %}">
-      <a href="{{ url_for('index', page=page) }}">{{ page }}</a>
+      {% if general%}
+        <a href="{{ url_for('indexBuscado', page=page, texto=general) }}">{{ page }}</a>
+      {% else %}
+        <a href="{{ url_for('index', page=page) }}">{{ page }}</a>
+      {% endif %}
     </li>
     {% else %}
     <li>
