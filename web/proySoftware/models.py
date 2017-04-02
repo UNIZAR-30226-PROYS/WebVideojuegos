@@ -56,7 +56,12 @@ class UsuarioVideojuego(db.Model):
   
 class Comentario(db.Model):
   __table__ = db.Model.metadata.tables['comentario']
- 
+
+class Plataforma(db.Model):
+  __table__ = db.Model.metadata.tables['plataforma']
+
+class PlataformaVideojuego(db.Model):
+  __table__ = db.Model.metadata.tables['plataforma_videojuego']
 
 
 

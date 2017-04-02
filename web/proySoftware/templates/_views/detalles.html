@@ -37,7 +37,7 @@
 								<form name="puntuacion" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
 									<div class="form-group row ">	
 										<div class="col-md-4">
-											{{ analisForm.analisis(class="form-control", id="user_puntuacion", value='', required="required", placeholder="100",  type="text") }}
+											{{ analisForm.analisis(class="form-control", id="user_puntuacion", value='', required="required", placeholder="10",  type="text") }}
 										</div>
 										<button id="user_puntuacion" class="btn btn-success" name="userPuntuacion[puntuacion]" type="submit" >Analisar</button>
 												

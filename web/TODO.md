@@ -19,11 +19,11 @@ Antes del 15 de marzo
 * [x] crear módulo html: 2horas  Antes del 30 de marzo
 * [x] crear routers(GET y POST): 2horas  Antes del 30 de marzo
 * [x] crear formularios: 2hora Antes del 30 de marzo
-* [ ] implementar funcionalidad de búsqueda(por título, plataforma o género): 6horas
+* [x] implementar funcionalidad de búsqueda(por título, plataforma o género): 6horas
 
 ##### Crear página de detalles de videojuego: 
 
-* [ ] crear módulo html: 1hora Antes del 21 de abril
+* [x] crear módulo html: 2hora Antes del 21 de abril
 * [ ] crear routers(GET y POST): 2hora Antes del 21 de abril
 * [ ] implementar funcionalidad de análisis: 5horas Antes del 21 de abril
 * [ ] implementar calificaciones: 3horas Antes del 21 de abril
@@ -35,7 +35,7 @@ Antes del 15 de marzo
 * [x] crear módulo html: 2hora Antes del 21 de abril
 * [x] crear routers(GET y POST): 2horas Antes del 21 de abril
 * [x] crear formularios: 3 horas Antes del 21 de abril
-* [ ] posible ampliación posterior de formulario de registro
+* [ ] posible ampliación posterior de formulario de registro 1h
 * [x] implementar manejo de cookies de session: 4horas Antes del 21 de abril
 
 ### Usuarios

@@ -9,11 +9,11 @@ Index | {{ super() }}
 <div class="container">
   <div>
   <h1>Listado de videojuegos</h1>
-  <form class="navbar-form navbar-left row" role="search">
+  <form class="navbar-form navbar-left row" name="busqueda" method="POST" action="{{ url_for( 'indexBusqueda' ) }}">
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search">
+      {{ busquedaForm.busqueda(class="form-control", id="busqueda", placeholder="titulo o género o plataforma", required="required", type="text") }}
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-default">Buscar</button>
   </form>
   <!--div class="btn-group" role="group" >
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

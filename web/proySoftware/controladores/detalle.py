@@ -41,10 +41,10 @@ def detalles(name, pk):
 		#cargar info de los formularios
 		formulario = AnalisisForm(request.form)
 		if 'nick' in session:
-			flash('Datos Incorrectos', 'danger')
+			flash('Enviado', 'success')
 			response = make_response(redirect(url_for('details', name=name, pk=pk)))
 		else :
-			flash('Datos Incorrectos', 'danger')
+			flash('Login requerido', 'danger')
 			response = make_response(redirect(url_for('details', name=name, pk=pk)))
 		return response
 	
