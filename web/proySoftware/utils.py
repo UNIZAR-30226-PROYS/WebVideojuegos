@@ -48,6 +48,9 @@ def get_user():
 
     return user
 
+def get_videogame_id(titulo):
+    videogame = Videojuego.query.filter(Videojuego.titulo==titulo).first()
+    return videogame.id
 
 def get_videogame_pictures(pk):
     """
@@ -87,6 +90,15 @@ def get_analisis(videojuego_id):
     analisis = Analisis.query.filter(Analisis.id_videojuego == videojuego_id).all()
     return analisis
   
-  
-  
+def insertar_comentario(user_id, analisis_id, texto):
+    comentario = Comentario()
+    comentario.id_usuario = user_id
+    comentario.id_analisis = analisis_id
+    comentario.comentario = texto
+    db.session.add(comentario)
+    db.session.commit()
+    
+def get_comentario(analisis_id):
+    comentario = Comentario.query.filter(Comentario.id_analisis == analisis_id).all()
+    return comentario  
   

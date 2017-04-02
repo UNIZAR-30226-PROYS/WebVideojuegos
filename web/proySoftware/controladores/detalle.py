@@ -20,7 +20,10 @@ from ..utils import *
 class AnalisisForm(Form):
 		analisis = StringField('analisis')
 		comentario = StringField('comentario')
-		puntuacion = StringField('nick', validators=[NumberRange(max=2)])
+
+#class ComentarioForm(Form):
+#		comentario = StringField('comentario')
+
 
 @app.route('/<name>/<int:pk>/', methods=['GET'])
 def details(name, pk):
@@ -33,16 +36,38 @@ def details(name, pk):
 		cover = get_videogame_cover(pk)
 		score = puntnMedia(pk)
 		analisForm = AnalisisForm()
+		#comentForm = ComentarioForm()
 		listAnalis = get_analisis(pk)
 		if listAnalis:
 			for analisis in listAnalis:
 					user = get_user()
 					analisis.user = user.nick
+					listcoment = get_comentario(analisis.id)
+					analisis.coments = listcoment
 		return render_template('_views/detalles.html',
             videojuego=videojuego,
             cover=cover,
             score=score,
 						analisForm=analisForm, listAnalis=listAnalis)
+
+
+
+def comentar(name, pk):
+		#cargar info de los formularios
+		#formulario = ComentarioForm(request.form)
+		formulario = AnalisisForm(request.form)
+		if 'nick' in session:
+			#obtener datos
+			id = get_user_id()
+			texto = formulario.data['comentario']
+			#crear nuevo analisis en bd
+			insertar_comentario(id, pk, texto)
+			flash('Enviado', 'success')
+			response = make_response(redirect(url_for('details', name=name, pk=get_videogame_id(name))))
+		else :
+			flash('Login requerido', 'danger')
+			response = make_response(redirect(url_for('details', name=name, pk=pk)))
+		return response
 
 @app.route('/<name>/<int:pk>/', methods=['POST'])
 def detalles(name, pk):
@@ -52,15 +77,19 @@ def detalles(name, pk):
 			#obtener datos
 			id = get_user_id()
 			texto = formulario.data['analisis']
-			#crear nuevo analisis en bd
-			insertar_analisis(id, pk, texto)
-			flash('Enviado', 'success')
+			if texto == '':
+				print "asdsda"
+				comentar(name, pk)
+			else :
+				#crear nuevo analisis en bd
+				insertar_analisis(id, pk, texto)
+				flash('Enviado', 'success')
 			response = make_response(redirect(url_for('details', name=name, pk=pk)))
 		else :
 			flash('Login requerido', 'danger')
 			response = make_response(redirect(url_for('details', name=name, pk=pk)))
 		return response
-	
+
 def puntnMedia(pk):
     '''
     Parámetros: id de un videojuego
@@ -69,3 +98,4 @@ def puntnMedia(pk):
     '''
     vid = Videojuego.query.filter_by(id=pk).first()
     return vid.puntnMedia
+	
