@@ -44,7 +44,7 @@ def get_user():
     """
     n_ick = get_user_cookie()['nick']
 
-    user = Usuario.query.filter_by(Usuario.nick==n_ick).first()
+    user = Usuario.query.filter_by(nick=n_ick).first()
 
     return user
 
@@ -74,3 +74,19 @@ def get_videogame_cover(pk):
     if not picture:
         return []
     return picture.nombre
+
+def insertar_analisis(user_id, videojuego_id, texto):
+    analisis = Analisis()
+    analisis.id_usuario = user_id
+    analisis.id_videojuego = videojuego_id
+    analisis.analisis = texto
+    db.session.add(analisis)
+    db.session.commit()
+  
+def get_analisis(videojuego_id):
+    analisis = Analisis.query.filter(Analisis.id_videojuego == videojuego_id).all()
+    return analisis
+  
+  
+  
+  

@@ -37,7 +37,7 @@
 								<form name="puntuacion" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
 									<div class="form-group row ">	
 										<div class="col-md-4">
-											{{ analisForm.analisis(class="form-control", id="user_puntuacion", value='', required="required", placeholder="10",  type="text") }}
+											{{ analisForm.analisis(class="form-control", id="user_puntuacion", required="required", placeholder="10",  type="text") }}
 										</div>
 										<button id="user_puntuacion" class="btn btn-success" name="userPuntuacion[puntuacion]" type="submit" >Analisar</button>
 												
@@ -86,20 +86,21 @@
 	<h3>Análisis</h3>
   <hr>
 	<div class="panel panel-default">
+		{% for obj in listAnalis %}
   <div class="panel-heading">
-    <h3 class="panel-title">Usuario x</h3>
+    <h3 class="panel-title">{{ obj.user }}</h3>
   </div>
   <div class="panel-body">
 		<div>
 			<p>
-				sadkljaslkdjaksjdlajsld  kljas sadkljaslkdj dlajsl aksjdlajsld dlajsl sadkljaslkdjaksjdlajsld  kljas sadkljaslkdj dlajsl aksjdlajsld dlajsl sadkljaslkdjaksjdlajsld  kljas sadkljaslkdj dlajsl aksjdlajsld dlajsl
+				{{ obj.analisis }}
 			</p>
 		</div>
 		<div class="container">
 		<form name="comentario" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">
 			<div class="form-group row ">	
 				<div class="col-md-10">
-				{{ analisForm.analisis(class="form-control", id="user_comentario", value='', required="required", placeholder="Escribir un comentario",  type="text") }}
+				{{ analisForm.analisis(class="form-control", id="user_comentario", required="required", placeholder="Escribir un comentario",  type="text") }}
 				</div>	
 				<div class="col-md-2">
 					<button id="user_comentario" class="btn btn-primary" name="userComentario[comentario]" type="submit" >Comentar</button>
@@ -109,7 +110,7 @@
 		</form>
 	</div>
   </div>
-	
+	{% endfor %}
 	</div>
 	<div class="container">
 		<form name="analisis" method="POST" action="{{  url_for('details',name=videojuego.titulo, pk=videojuego.id)}}">

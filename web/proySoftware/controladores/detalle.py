@@ -12,12 +12,15 @@ from flask import flash
 from flask import session
 from wtforms.validators import *
 
+
 from ..models import *
 from ..utils import *
 
 #formulario para analisis
 class AnalisisForm(Form):
-    analisis = StringField('analisis')
+		analisis = StringField('analisis')
+		comentario = StringField('comentario')
+		puntuacion = StringField('nick', validators=[NumberRange(max=2)])
 
 @app.route('/<name>/<int:pk>/', methods=['GET'])
 def details(name, pk):
@@ -30,17 +33,27 @@ def details(name, pk):
 		cover = get_videogame_cover(pk)
 		score = puntnMedia(pk)
 		analisForm = AnalisisForm()
+		listAnalis = get_analisis(pk)
+		if listAnalis:
+			for analisis in listAnalis:
+					user = get_user()
+					analisis.user = user.nick
 		return render_template('_views/detalles.html',
             videojuego=videojuego,
             cover=cover,
             score=score,
-						analisForm=analisForm)
+						analisForm=analisForm, listAnalis=listAnalis)
 
 @app.route('/<name>/<int:pk>/', methods=['POST'])
 def detalles(name, pk):
 		#cargar info de los formularios
 		formulario = AnalisisForm(request.form)
 		if 'nick' in session:
+			#obtener datos
+			id = get_user_id()
+			texto = formulario.data['analisis']
+			#crear nuevo analisis en bd
+			insertar_analisis(id, pk, texto)
 			flash('Enviado', 'success')
 			response = make_response(redirect(url_for('details', name=name, pk=pk)))
 		else :
