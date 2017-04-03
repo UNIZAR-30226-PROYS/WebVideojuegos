@@ -1,4 +1,4 @@
-1) Registrarse en codeanywhere.com
+## 1) Registrarse en codeanywhere.com
 
 - Entrar en la página y registrarse (y después confirmar el registro entrando
  al link que viene en el correo electrónico que te envían).
@@ -12,7 +12,7 @@
  sobre la que es un terminal (línea de comandos).
  
 
-2) Descargar los archivos de la Web
+## 2) Descargar los archivos de la Web
 
 - Crear una carpeta para meter los repositorios de GitHub
  (mkdir github;cd github).
@@ -21,7 +21,7 @@
  (git clone https://github.com/UNIZAR-30226-2017-05/WebVideojuegos.git).
  
 
-3) Instalar Flask y MySQL
+## 3) Instalar Flask y MySQL
 
 - Entramos en el proyecto (cd WebVideojuegos/web) e instalamos Flask (./install.sh).
 
@@ -36,7 +36,7 @@
       sudo chkconfig mysqld on
 
 
-4) Crear y poblar la Base de Datos
+## 4) Crear y poblar la Base de Datos
 
 - Accedemos a la carpeta con los archivos de la BBDD (cd archivosBBDD).
 
@@ -56,7 +56,7 @@ Apunte de Dariel:
 -- mysql -u software -p'software' 'proySoftware'
 
 
-5) Arrancar el servidor de la página Web
+## 5) Arrancar el servidor de la página Web
 
 - Volvemos a la carpeta "web" (cd ..).
 
