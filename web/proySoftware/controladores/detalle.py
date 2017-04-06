@@ -40,8 +40,9 @@ def details(name, pk):
 		listAnalis = get_analisis(pk)
 		if listAnalis:
 			for analisis in listAnalis:
-					user = get_user()
-					analisis.user = user.nick
+					id_user = analisis.id_usuario
+					user_nick = get_user_name(id_user)
+					analisis.user = user_nick
 					listcoment = get_comentario(analisis.id)
 					analisis.coments = listcoment
 		return render_template('_views/detalles.html',

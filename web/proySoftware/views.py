@@ -41,7 +41,6 @@ def buscarVideojuego(texto, page):
         videogame = Videojuego.query.filter(Videojuego.puntnMedia == texto).paginate(page, 20, False)
     if not videogame.items:
         videogame = Videojuego.query.filter(Videojuego.id == PlataformaVideojuego.id_videojuego, Plataforma.id == PlataformaVideojuego.id_plataforma, Plataforma.nombre == texto).order_by(Videojuego.puntnMedia.desc()).paginate(page, 20, False)
-        print videogame
     if not videogame.items:
         videogame = Videojuego.query.filter(Videojuego.id == GeneroVideojuego.id_videojuego, Genero.id == GeneroVideojuego.id_genero, Genero.nombre == texto).order_by(Videojuego.puntnMedia.desc()).paginate(page, 20, False)
     if not videogame.items:

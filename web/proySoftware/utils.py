@@ -48,6 +48,10 @@ def get_user():
 
     return user
 
+def get_user_name(pk):
+    user = Usuario.query.filter(Usuario.id == pk).first()
+    return user.nick
+
 def get_videogame_id(titulo):
     videogame = Videojuego.query.filter(Videojuego.titulo==titulo).first()
     return videogame.id
