@@ -23,7 +23,7 @@ class busquedaForm(Form):
 @app.route('/')
 @app.route('/<int:page>', methods=['GET'])
 def index(page=1):
-    lista = Videojuego.query.paginate(page, 20, False)
+    lista = Videojuego.query.order_by(Videojuego.puntnMedia.desc()).paginate(page, 20, False)
     for videojuego in lista.items:
         insert_atributes(videojuego)
     formulario = busquedaForm()
@@ -36,15 +36,16 @@ def insert_atributes(videojuego):
       videojuego.picture = picture
       
 def buscarVideojuego(texto, page):
-    videogame = Videojuego.query.filter(Videojuego.titulo == texto ).paginate(page, 20, False)
+    videogame = Videojuego.query.filter(Videojuego.titulo == texto ).order_by(Videojuego.puntnMedia.desc()).paginate(page, 20, False)
     if not videogame.items:
         videogame = Videojuego.query.filter(Videojuego.puntnMedia == texto).paginate(page, 20, False)
     if not videogame.items:
-        #videogame = Videojuego.query.filter(Videojuego.id == PlataformaVideojuego.id_videojuego and Plataforma.id == PlataformaVideojuego.id_plataforma and Plataforma.nombre == texto).paginate(page, 20, False)
-        videogame = Videojuego.query.filter(Videojuego.id == PlataformaVideojuego.id_videojuego, Plataforma.id == PlataformaVideojuego.id_plataforma, Plataforma.nombre == texto).paginate(page, 20, False)
+        videogame = Videojuego.query.filter(Videojuego.id == PlataformaVideojuego.id_videojuego, Plataforma.id == PlataformaVideojuego.id_plataforma, Plataforma.nombre == texto).order_by(Videojuego.puntnMedia.desc()).paginate(page, 20, False)
         print videogame
     if not videogame.items:
-        videogame = Videojuego.query.filter(Videojuego.id == GeneroVideojuego.id_videojuego, Genero.id == GeneroVideojuego.id_genero, Genero.nombre == texto).paginate(page, 20, False)
+        videogame = Videojuego.query.filter(Videojuego.id == GeneroVideojuego.id_videojuego, Genero.id == GeneroVideojuego.id_genero, Genero.nombre == texto).order_by(Videojuego.puntnMedia.desc()).paginate(page, 20, False)
+    if not videogame.items:
+        videogame = Videojuego.query.filter(Videojuego.id == DesarrolladoraVideojuego.id_videojuego, Desarrolladora.id == DesarrolladoraVideojuego.id_desarrolladora, Desarrolladora.nombre == texto).order_by(Videojuego.puntnMedia.desc()).paginate(page, 20, False)
     return videogame
   
 @app.route('/<int:page>', methods=['GET'])
