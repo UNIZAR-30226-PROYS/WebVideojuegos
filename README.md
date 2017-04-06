@@ -1,9 +1,12 @@
-# WebVideojuegos
+# WebVideojuegos ![lgoWeb](https://github.com/UNIZAR-30226-2017-05/WebVideojuegos/blob/master/web/proySoftware/static/img/logo.jpg?raw=true)
 
 ## Sobre el Proyecto
 
 El proyecto permite publicar a los usuarios un registro de los videojuegos que han probado con las opiniones y la calificación que creen que estos videojuegos merecen. De este modo, por una parte, sus conocidos pueden enterarse de los videojuegos que han probado e interpretar las opiniones favorables como recomendaciones; y, por otra, los usuarios en general pueden conocer la opinión y el interés que despierta cierto videojuego en quienes ya lo han probado. Los usuarios pueden, así, descubrir nuevos videojuegos interesantes y, en función de la opinión del resto de gente, tanto anónima como conocida, decidir si jugarlos o no.
 
+#### Requisitos del sistema
+Consultar:
+[Requisitos](https://github.com/UNIZAR-30226-2017-05/WebVideojuegos/blob/master/otros/extras/Requisitos_WebVideojuegos.md)
 
 ## Diagramas
 #### Vista-Controlador
