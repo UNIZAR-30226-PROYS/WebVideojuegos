@@ -25,6 +25,7 @@ RNF3 - El registro de un nuevo usuario se realizará proporcionando un nick úni
 RNF4 - El perfil de usuario consta de: nick, sexo, fecha de registro y datos opcionales (nombre real, avatar y descripción personal).  
 RNF5 - Las últimas actividades de un usuario constan de: calificaciones a juegos, calificación media del usuario y análisis publicados.  
 RNF6 - Un usuario no puede marcar el mismo juego como jugado y como deseado a la vez.  
+RNF7 - La página principal mostrará una lista de videojuegos ordenada por puntuación descendente.  
 
 ## Restricciones Generales
 
