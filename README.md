@@ -16,6 +16,10 @@ El proyecto permite publicar a los usuarios un registro de los videojuegos que h
 Consultar: 
 [BasedeDatos](https://github.com/UNIZAR-30226-2017-05/WebVideojuegos/blob/master/otros/extras/BasedeDatos.md)
 
+#### Diseño de vistas principales
+Consultar:
+[Vistas](https://github.com/UNIZAR-30226-2017-05/WebVideojuegos/blob/master/otros/extras/pantallas.md)
+
 ## Estado actual
 Para consultar el estado del proyecto consultar el:
 [Listado de tareas realizadas y pendientes](https://github.com/UNIZAR-30226-2017-05/WebVideojuegos/blob/master/web/TODO.md)
