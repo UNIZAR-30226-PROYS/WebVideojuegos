@@ -29,29 +29,37 @@ Para consultar el estado del proyecto consultar el:
 
 #### Listado actual de routes
 1. / equivale a /index :
- * Get:
+ * **Get:**
  * requiere(_views/index)
  * devuelve render_template(index, videojuegos:lista) 
  
 2. /login : 
- * Get:
+ * **Get:**
  * requiere(_views/registro_login)
  * devuelve render_template(_views/registro_login, data:user_cookies, loginForm:Formulario, registroFormulario) 
- * Post:
+ * **Post:**
  * devuelve /login or / dependiendo del exito o no del proceso de login  
  
 3. /loggout es / pero enmascara la funcionalidad de limpiar las cookies de session y usuario 
 
 4. /registro
- * Post:
- * devuelve: routa de /perfilUsuario
+ * **Post:**
+ * devuelve: ruta de /perfilUsuario
+ 
+5. /detalles :
+ * **Get:**
+ * requiere(_views/detalles)
+ * devuelve return render_template('_views/detalles.html', videojuego=videojuego, cover=cover, score=score, analisForm=analisForm, listAnalis=listAnalis)
+ * **Post:**
+ * devuelve: ruta a /detalles
 
-5. /perfilUsuario --> declarado, no implementado
+6. /perfilUsuario --> declarado, no implementado
 
 #### Listado actual de views
 1. _views/index
 2. _views/registro_login
-3. _views/perfilUsuario --> declarado, no implementado
+3. _views/detalles
+4. _views/perfilUsuario --> declarado, no implementado
 
 #### Listado de modelos(modelos de conexion Base de Datos)
 0. Usuario
