@@ -105,4 +105,46 @@ def insertar_comentario(user_id, analisis_id, texto):
 def get_comentario(analisis_id):
     comentario = Comentario.query.filter(Comentario.id_analisis == analisis_id).all()
     return comentario  
+
+  
+def insertar_new_user_vid(user_id, videojuego_id, jugado, deseado, texto):
+    userVid = UsuarioVideojuego()
+    userVid.id_usuario = user_id
+    userVid.id_videojuego = videojuego_id
+    userVid.jugado = jugado
+    userVid.deseado = deseado
+    userVid.puntuacion = texto
+    db.session.add(userVid)
+    db.session.commit()
+    
+def insertar_puntuacion(user_id, videojuego_id, texto):
+    userVid = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_usuario == user_id, UsuarioVideojuego.id_videojuego == videojuego_id).first()
+    if not userVid:
+      insertar_new_user_vid(user_id, videojuego_id, 0, 0, texto)
+    else :
+      db.session.delete(userVid)
+      userVid.puntuacion = texto
+      db.session.add(userVid)
+      db.session.commit()
+    actualizarPuntnm(videojuego_id)
+      
+def actualizarPuntnm(videojuego_id):
+    lista = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_videojuego == videojuego_id).all()
+    numVid = 0
+    puntnM = 0
+    if lista:
+      for i in lista:
+        numVid = numVid + 1
+        puntnM = puntnM + i.puntuacion
+    else :
+      numVid = 1
+    puntnM = puntnM / numVid
+    print puntnM
+    videojuego = Videojuego.query.filter(Videojuego.id == videojuego_id).first()
+    db.session.delete(videojuego)
+    videojuego.puntnMedia = puntnM
+    db.session.add(videojuego)
+    db.session.commit()
+  
+  
   

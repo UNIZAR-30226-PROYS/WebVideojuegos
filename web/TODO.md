@@ -24,10 +24,10 @@ Antes del 15 de marzo
 ##### Crear página de detalles de videojuego: 
 
 * [x] crear módulo html: 2hora Antes del 21 de abril
-* [ ] crear routers(GET y POST): 2hora Antes del 21 de abril
-* [ ] implementar funcionalidad de análisis: 5horas Antes del 21 de abril
-* [ ] implementar calificaciones: 3horas Antes del 21 de abril
-* [ ] implementar comentarios: 4horas Antes del 21 de abril
+* [x] crear routers(GET y POST): 2hora Antes del 21 de abril
+* [x] implementar funcionalidad de análisis: 5horas Antes del 21 de abril
+* [x] implementar calificaciones: 3horas Antes del 21 de abril
+* [x] implementar comentarios: 4horas Antes del 21 de abril
 * [ ] implementar funcionalidad jugado/deseado: 3horas
 
 ### Página de login y registro: 

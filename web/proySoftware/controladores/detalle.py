@@ -3,7 +3,7 @@
 from proySoftware import app
 from flask import render_template
 from flask_wtf import FlaskForm
-from wtforms import Form, StringField, validators
+from wtforms import Form, StringField, IntegerField, validators
 from flask import request
 from flask import redirect
 from flask import url_for
@@ -20,6 +20,7 @@ from ..utils import *
 class AnalisisForm(Form):
 		analisis = StringField('analisis')
 		comentario = StringField('comentario')
+		puntuacion = IntegerField('puntuacion', validators=[NumberRange(min=0, max=10)])
 
 #class ComentarioForm(Form):
 #		comentario = StringField('comentario')
@@ -55,7 +56,6 @@ def details(name, pk):
 
 def comentar(name, pk):
 		#cargar info de los formularios
-		#formulario = ComentarioForm(request.form)
 		formulario = AnalisisForm(request.form)
 		if 'nick' in session:
 			#obtener datos
@@ -69,7 +69,27 @@ def comentar(name, pk):
 			flash('Login requerido', 'danger')
 			response = make_response(redirect(url_for('details', name=name, pk=pk)))
 		return response
-
+	
+def puntuar(name, pk):
+		#cargar info de los formularios
+		formulario = AnalisisForm(request.form)
+		if 'nick' in session:
+			#obtener datos
+			id = get_user_id()
+			texto = formulario.data['puntuacion']
+			if formulario.validate() :
+				#crear nuevo analisis en bd
+				insertar_puntuacion(id, pk, texto)
+				flash('Enviado', 'success')
+				response = make_response(redirect(url_for('details', name=name, pk=pk)))
+			else :
+				flash('Datos no validos', 'danger')
+				response = make_response(redirect(url_for('details', name=name, pk=pk)))
+		else :
+			flash('Login requerido', 'danger')
+			response = make_response(redirect(url_for('details', name=name, pk=pk)))
+		return response
+	
 @app.route('/<name>/<int:pk>/', methods=['POST'])
 def detalles(name, pk):
 		#cargar info de los formularios
@@ -79,7 +99,11 @@ def detalles(name, pk):
 			id = get_user_id()
 			texto = formulario.data['analisis']
 			if texto == '':
-				response = comentar(name, pk)
+				texto = formulario.data['comentario']
+				if texto == '':
+					response = puntuar(name, pk)
+				else :
+					response = comentar(name, pk)
 			else :
 				#crear nuevo analisis en bd
 				insertar_analisis(id, pk, texto)
