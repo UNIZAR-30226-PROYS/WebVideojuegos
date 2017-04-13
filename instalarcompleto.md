@@ -24,10 +24,14 @@
 ## 3) Instalar Flask y MySQL
 
 - Entramos en el proyecto (cd WebVideojuegos/web) e instalamos Flask (./install.sh).
+	Deberemos antes darnos permisos de ejecución (chmod +x intall.sh)
 
 - Para instalar e iniciar MySQL hay que seguir los pasos que se dan en la página:
  https://www.ochobitshacenunbyte.com/2015/02/02/crear-una-base-de-datos-mysql-en-gnu-linux/
    Se pide que ejecutemos los siguientes comandos para CentOS (usando sudo por permisos):
+
+   	Posiblemente antes de instalar correctamente MySQL, deberemos ejecutar
+	sudo pip install --upgrade pip
    
       sudo yum install mysql-server
       
@@ -61,7 +65,7 @@ Apunte de Dariel:
 - Volvemos a la carpeta "web" (cd ..).
 
 - Para poder acceder a la BBDD desde el servidor de Flask, instalamos
- el paquete [(yum install MySQL-python) ó (apt get install MySQL-python)].
+ el paquete [(sudo yum install MySQL-python) ó (sudo apt get install MySQL-python)].
  
 - Arrancamos el servidor (python run.py).
 
