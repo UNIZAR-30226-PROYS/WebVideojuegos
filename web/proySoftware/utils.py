@@ -30,6 +30,11 @@ def get_user_id():
     user = Usuario.query.filter_by(nick=n_ick).first()
 
     return user.id
+  
+def get_user_by_name(name):
+    user = Usuario.query.filter(Usuario.nick==name).first()
+    
+    return user
 
 def get_user_contrasena(n_ick):
     """

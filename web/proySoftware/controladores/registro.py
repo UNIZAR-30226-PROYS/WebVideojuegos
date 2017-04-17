@@ -20,9 +20,9 @@ from ..views import *
 from ..utils import *
 #formulario de registro
 class RegistroForm(Form):
-	nick = StringField('nick', validators=[NumberRange(min=4)])
-	password = PasswordField('password')
-	sexo = StringField('sexo')
+	nick = StringField('nick', [validators.Length(min=4, max=20)])
+	password = PasswordField('password', [validators.Length(min=8, max=25)])
+	sexo = StringField('sexo', [validators.Length(min=0, max=1)])
 	
 
 #inserta un nuevo usario a la base de Datos
@@ -49,12 +49,24 @@ def registro():
 	,y crea una cookie y una session para el usuario.
     '''
 	formulario = RegistroForm(request.form)
-	response = make_response( redirect(url_for('perfilUsuario')))
-	data = get_user_cookie()
-	data.update(formulario.data)
-	session['nick'] = formulario.data['nick']
-	session['username'] = formulario.data['nick']
-	insert_usuario(data)
-	response.set_cookie('character', json.dumps(data))
-	flash('Registro Completado', 'success')
+	nombre = get_user_by_name(formulario.data['nick'])
+	if formulario.validate() and not nombre :
+		response = make_response( redirect(url_for('perfilUsuario')))
+		data = get_user_cookie()
+		data.update(formulario.data)
+		session['nick'] = formulario.data['nick']
+		session['username'] = formulario.data['nick']
+		insert_usuario(data)
+		response.set_cookie('character', json.dumps(data))
+		flash('Registro Completado', 'success')
+	else:
+		response = make_response( redirect(url_for('login')))
+		flash('Datos Incorrectos o usuario ya existe', 'danger')
 	return response
+
+
+
+
+
+
+
