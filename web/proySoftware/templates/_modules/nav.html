@@ -1,22 +1,22 @@
-<nav class="navbar navbar-default">
+<nav class="Segunda Cabecera navbar navbar-inverse">
   <div class="container">
     <div class="navbar-header">
       <a class="" href="{{ url_for('index') }}">
         <img alt="Brand" src="/static/img/logo.jpg">
       </a>
     </div>
-    <p class="navbar-text">VideojuegosDB</p>
+    <h1 class="navbar-text">VideojuegosDB</h1>
     <div class="navbar-right">
-<div class="btn-group" role="group">
-  {% if session.nick %}
-        <a href="{{ url_for('perfilUsuario') }}" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Perfil</a>
-        <a href="{{ url_for('loggout') }}" class="btn btn-default navbar-btn glyphicon glyphicon-logout"> logout</a>
-   {% else %}
-        <a href="{{ url_for('login') }}" class="btn btn-default navbar-btn glyphicon glyphicon-user"> Login</a>
-  {% endif %}
-</div>
+      <div class="btn-group" role="group">
+        {% if session.nick %}
+              <a href="{{ url_for('perfilUsuario') }}" class="btn btn-primary navbar-btn glyphicon glyphicon-user"> Perfil</a>
+              <a href="{{ url_for('loggout') }}" class="btn btn-primary navbar-btn glyphicon glyphicon-logout"> logout</a>
+         {% else %}
+              <a href="{{ url_for('login') }}" class="btn btn-primary navbar-btn glyphicon glyphicon-user"> Login</a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="navbar-right">
+    </div>
   </div>
-  <div class="navbar-right">
-  </div>
-</div>
 </nav>

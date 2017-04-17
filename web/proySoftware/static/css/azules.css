@@ -1,86 +1,20 @@
 @charset "utf-8";
 
-.Negro {
-	color: #000000
-	}
-.Primera{
-	color:#001218
+footer{
+  margin-top: 5em;
+  position:relative;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+ 
 }
-.Segunda{
-	color:#00161e
+
+.TerceraW{
+	background:#0280ab
 }
-.Tercera{
-	color:#001e28
+.LettCab{
+	color:#fff
 }
-.Cuarta{
-	color:#00222d
-}
-.Quinta{
-	color:#012835
-}
-.Sexta{
-	color:#012d3c
-}
-.Septima{
-	color:#013446
-}
-.Octava{
-	color:#013a4e
-}
-.Novena{
-	color:#014157
-}
-.Decima{
-	color:#014962
-}
-.Undecima{
-	color:#015774
-}
-.Duodecima{
-	color:#026182
-}
-.Decimotercera{
-	color:#026b8f
-}
-.Decimocuarta{
-	color:#01759d
-}
-.Decimoquinta{
-	color:#0280ab
-}
-.Decimosexta{
-	color:#048dbc
-}
-.Decimoseptima{
-	color:#0494c6
-}
-.Decimoctava{
-	color:#049fd5
-}
-.Decimonovena{
-	color:#04abe5
-}
-.Vigesima{
-	color:#05bdfd
-}
-.Vigesimaprimero{
-	color:#39b7e3
-}
-.Vigesimosegundo{
-	color:#7dc8e2
-}
-.Vigesimotercero{
-	color:#8ebbcb
-}
-.Vigesimocuarto{
-	color:#8bafbb
-}
-.Vigesimoquinto{
-	color:#a7cad6
-}
-.Vigsimosexto{
-	color:#cde1e8
-}
-.Blanco{
-	color:#ffffff
+.Cabecera{
+	background:#607d8b
 }
