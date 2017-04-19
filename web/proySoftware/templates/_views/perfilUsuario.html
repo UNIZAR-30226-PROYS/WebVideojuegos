@@ -6,8 +6,103 @@ PerfilUsuario | {{ super() }}
 
 
 {% block content %}
-<div class="container">
-  Ahora estas en el perfil
-</div>
+<div class="container-fluid">
+  <div class="row">
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="text-left">
+        Mi Perfil
+      </h1>
+      <hr>
+      <div class="row">
 
+        <div class="col-md-3">
+          <img alt="Bootstrap Image Preview" src="{{user.avatar}}"/ width=200 height=200><br/></br>
+          <form name="mod_img" method="POST" action="{{ url_for( 'mod_img' ) }}">
+            <div class="form-group">
+              {{ imgForm.imagen(class="form-control", id="user_imagen", placeholder="/url/Imagen/", type="url") }}
+            </div>
+            <button id="user_imga_but" name="user_imga_but" class="btn btn-default" type="submit">Cambiar imagen</button>
+          </form>
+
+        </div>
+        <div class="col-md-9">
+
+          <p><b>Nick:</b><br>{{user.nick}}<br></p>
+          <p><b>Sexo:</b><br>{{user.genro}}<br></p>
+          <p><b>Fecha de Registro:</b><br>{{ user.fechaRegistro}}<br></p>
+          <h4 class = "Separador">
+            Datos Opcionales
+          </h4>
+          <p><b>Nombre:</b><br>{{user.Nombre}}<br></p>
+          <p><b>Descripción:</b><br>{{user.descripcion}}<br></p>
+
+          <a href="/changePassword/"><button type="button" class="btn btn-default">Cambiar contrasena</button></a>
+            <a href="/mod_datos/"><button type="button" class="btn btn-default">Modificar datos</button></a>
+            <br/><a href="/deletUser/">Eliminar cuenta</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <!--ACTIVIDAD DEL USUARIO-->
+      <h3>
+        Actividad
+      </h3>
+      <hr>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              Tipo
+            </th>
+            <th>
+              Videojuego
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+         
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% if favorites %}
+  <div class="container">
+    <h2>Lista de deseados</h2>
+    <strong>
+      <div class="row">
+        <div class="col-md-6">Videojuego</div>
+        <div class="col-md-3">Fecha</div>
+        <div class="col-md-3">Eliminar</div>
+      </div>
+      <hr style="height:3px;border:none;color:#eee;background-color:#eee;" />
+    </strong>
+    {% for videojuego in favorites %}
+    <form action="{{ url_for('delete_from_list') }}" class="form-inline" method="POST">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            {% if videojuego[0].picture %}
+            <div class="col-sm-2 hidden-xs"><img src="{{ videojuego[0].picture }}" alt="..." class="img-responsive"/></div>
+            {% endif %}
+            <div class="col-sm-100x10010">
+              <h4 class="nomargin">quit</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          quit
+        </div>
+        <div class="col-md-3">
+        quit
+          <button class="btn btn-danger btn-sm" type="submit"><i class="glyphicon glyphicon-trash"></i></button>
+        </div>
+      </div>
+      <hr style="height:3px;border:none;color:#eee;background-color:#eee;" />
+    </form>
+    {% endfor  %}
+  </div>
+  {% endif %}
+</div>
 {% endblock %}

@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS usuario(
 	nombre varchar(140),
 	descripcion varchar(500),
 	puntMediaUsur int unsigned,
-	avatar varchar(300)
+	avatar varchar(500)
 );
 
 CREATE TABLE IF NOT EXISTS videojuego(
