@@ -15,7 +15,7 @@ from wtforms.validators import *
 from ..models import *
 from ..views import *
 from ..utils import *
-
+from registro import *
 #formulario para modificar imagen de perfil
 class ImgPerfilForm(Form):
     imagen = StringField('imagen')
@@ -30,7 +30,8 @@ def perfilUsuario():
     de perfil.
     '''
     data = get_user_cookie()
-    usuario = get_user()
+    name = get_user_cookie()['nick']
+    usuario = get_user_by_name(name) 
     #action=get_action_list()
     #favorites=get_favorite_list()
     #form = UpdateList()
@@ -60,12 +61,44 @@ def mod_img():
     flash('Imagen de perfil cambiada', 'success')
     return perfilUsuario()
 
+#modificar datos de usuario [get, post]
+#permite modificar los datos almacenados referentes al usuario
+@app.route('/mod_datos/', methods=['GET', 'POST'])
+def mod_datos():
+    '''
+    Router: accesible mediante los métodos GET y POST de HTTP/HTTPS.
+    Descripción: para el GET devuelve la template del modificar.html con un formulario para
+    modificar los datos de usuario, para el POST recupera la información del formulario y
+    la inserta en la base de datos luego redirecciona a perfilUsuario .
+    Función: se encarga de la modificación de los datos del usuario
+    '''
+    if request.method == 'GET' :
+      formulario = RegistroForm()
+      name = get_user_cookie()['nick']
+      usuario = get_user_by_name(name) 
+      data = get_user_cookie()
+      return render_template("_modules/modificar.html", saves=data, user=usuario, registroForm = formulario)
+    else :
+      formulario = RegistroForm(request.form)
+      data = get_user_cookie()
+      data.update(formulario.data)
+      usuario = get_user()
+      db.session.delete(usuario)
+      usuario.genero = data.get('sexo', ' ')
+      usuario.nombre = data.get('nombre', ' ')
+      usuario.descripcion = data.get('descripcion', ' ')
+      db.session.add(usuario)
+      db.session.commit()
+      imgForm = ImgPerfilForm()
+      action=get_action_list()
+      favorites=get_favorite_list()
+      form = UpdateList()
+      flash('Datos Modificados Satisfactoriamente', 'success')
+      return render_template("_views/perfilUsuario.html", user=usuario, logueado=data, imgForm=imgForm)
   
   
   
-  
-  
-  
+
   
   
   

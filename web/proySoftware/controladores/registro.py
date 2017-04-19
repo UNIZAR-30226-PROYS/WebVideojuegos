@@ -23,7 +23,8 @@ class RegistroForm(Form):
 	nick = StringField('nick', [validators.Length(min=4, max=20)])
 	password = PasswordField('password', [validators.Length(min=8, max=25)])
 	sexo = StringField('sexo', [validators.Length(min=0, max=1)])
-	
+	nombre = StringField('nombre', [validators.Length(min=0, max=140)])
+	descripcion = StringField('descripcion', [validators.Length(min=0, max=500)])
 
 #inserta un nuevo usario a la base de Datos
 #requiere un parametro cookie('character')
