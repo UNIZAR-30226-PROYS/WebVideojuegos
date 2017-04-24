@@ -90,14 +90,46 @@ def mod_datos():
       db.session.add(usuario)
       db.session.commit()
       imgForm = ImgPerfilForm()
-      action=get_action_list()
-      favorites=get_favorite_list()
-      form = UpdateList()
+      #form = UpdateList()
       flash('Datos Modificados Satisfactoriamente', 'success')
       return render_template("_views/perfilUsuario.html", user=usuario, logueado=data, imgForm=imgForm)
   
   
-  
+#elimina la cuenta del usuario actual
+@app.route('/deletUser/', methods=['GET'])
+def deletUser():
+    '''
+    Router: accesible mediante el método GET de HTTP/HTTPS.
+    Descripción: deletUser redirecciona al router de index.
+    Función: Elimina todos los datos almacenados en la base de datos referentes
+    al usario y hace logout.
+    '''
+    response = make_response(redirect(url_for('index')))
+    data = get_user_cookie()
+    usuario = get_user()
+    analist = Analisis.query.filter(Analisis.id_usuario == usuario.id).all()
+    comlist = Comentario.query.filter(Comentario.id_usuario == usuario.id).all()
+    if comlist:
+      for jt in comlist:
+          db.session.delete(jt)
+          db.session.commit()
+    if analist:
+      for it in analist:
+          db.session.delete(it)
+          db.session.commit()
+    userVidList = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_usuario == usuario.id).all()        
+    if userVidList:
+      for userVid in userVidList:
+          db.session.delete(userVid)
+          db.session.commit()
+    db.session.delete(usuario)
+    db.session.commit()
+    data = {}
+    if 'nick' in session:
+        session.pop('nick')
+    response.set_cookie('character', json.dumps(data))
+    return response
+
 
   
   

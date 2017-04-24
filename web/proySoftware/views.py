@@ -36,15 +36,15 @@ def insert_atributes(videojuego):
       videojuego.picture = picture
       
 def buscarVideojuego(texto, page):
-    videogame = Videojuego.query.filter(Videojuego.titulo == texto ).order_by(Videojuego.puntnMedia.desc()).paginate(page, 20, False)
+    videogame = Videojuego.query.filter(Videojuego.titulo == texto ).paginate(page, 20, False)
     if not videogame.items:
         videogame = Videojuego.query.filter(Videojuego.puntnMedia == texto).paginate(page, 20, False)
     if not videogame.items:
-        videogame = Videojuego.query.filter(Videojuego.id == PlataformaVideojuego.id_videojuego, Plataforma.id == PlataformaVideojuego.id_plataforma, Plataforma.nombre == texto).order_by(Videojuego.puntnMedia.desc()).paginate(page, 20, False)
+        videogame = Videojuego.query.filter( Videojuego.id == PlataformaVideojuego.id_videojuego, Plataforma.id == PlataformaVideojuego.id_plataforma, Plataforma.nombre == texto).paginate(page, 20, False)
     if not videogame.items:
-        videogame = Videojuego.query.filter(Videojuego.id == GeneroVideojuego.id_videojuego, Genero.id == GeneroVideojuego.id_genero, Genero.nombre == texto).order_by(Videojuego.puntnMedia.desc()).paginate(page, 20, False)
+        videogame = Videojuego.query.filter(Videojuego.id == GeneroVideojuego.id_videojuego, Genero.id == GeneroVideojuego.id_genero, Genero.nombre == texto).paginate(page, 20, False)
     if not videogame.items:
-        videogame = Videojuego.query.filter(Videojuego.id == DesarrolladoraVideojuego.id_videojuego, Desarrolladora.id == DesarrolladoraVideojuego.id_desarrolladora, Desarrolladora.nombre == texto).order_by(Videojuego.puntnMedia.desc()).paginate(page, 20, False)
+        videogame = Videojuego.query.filter(Videojuego.id == DesarrolladoraVideojuego.id_videojuego, Desarrolladora.id == DesarrolladoraVideojuego.id_desarrolladora, Desarrolladora.nombre == texto).paginate(page, 20, False)
     return videogame
   
 @app.route('/<int:page>', methods=['GET'])
