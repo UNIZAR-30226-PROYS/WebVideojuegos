@@ -35,16 +35,15 @@ Antes del 15 de marzo
 * [x] crear módulo html: 2hora Antes del 21 de abril
 * [x] crear routers(GET y POST): 2horas Antes del 21 de abril
 * [x] crear formularios: 3 horas Antes del 21 de abril
-* [ ] posible ampliación posterior de formulario de registro 1h
 * [x] implementar manejo de cookies de session: 4horas Antes del 21 de abril
 
 ### Usuarios
 ##### Perfil Privado: 
-* [ ] crear módulo html: 2horas Antes del 30 de abril
-* [ ] crear routers(GET y POST): 2horas Antes del 30 de abril
-* [ ] crear formularios: 2hora Antes del 30 de abril
-* [ ] implementar funcionalidad de editar perfil(incluido cambiar avatar): 3horas Antes del 19 de mayo
-* [ ] implementar funcionalidad de eliminar perfil: 30min Antes del 19 de mayo
+* [x] crear módulo html: 2horas Antes del 30 de abril
+* [x] crear routers(GET y POST): 2horas Antes del 30 de abril
+* [x] crear formularios: 2hora Antes del 30 de abril
+* [x] implementar funcionalidad de editar perfil(incluido cambiar avatar): 3horas Antes del 19 de mayo
+* [x] implementar funcionalidad de eliminar perfil: 30min Antes del 19 de mayo
 
 ##### Actividad de Usuarios: 
 
