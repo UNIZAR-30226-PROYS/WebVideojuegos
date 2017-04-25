@@ -111,7 +111,7 @@ def detalles(name, pk):
 				response = make_response(redirect(url_for('details', name=name, pk=pk)))
 		else :
 			flash('Login requerido', 'danger')
-			response = make_response(redirect(url_for('details', name=name, pk=pk)))
+			response = make_response(redirect(url_for('details', name=name, pk=get_videogame_id(name))))
 		return response
 
 def puntnMedia(pk):
