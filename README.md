@@ -8,7 +8,7 @@ El proyecto permite publicar a los usuarios un registro de los videojuegos que h
 Consultar:
 [Requisitos](https://github.com/UNIZAR-30226-2017-05/WebVideojuegos/blob/master/otros/extras/Requisitos_WebVideojuegos.md)
 
-### Planificación y Presupuesto
+#### Planificación y Presupuesto
 
 Consultar:
 [Planificación y Presupuestos](https://github.com/UNIZAR-30226-2017-05/WebVideojuegos/blob/master/otros/extras/planificacion_y_presupuesto.md)
