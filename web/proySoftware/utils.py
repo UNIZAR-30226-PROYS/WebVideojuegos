@@ -41,6 +41,8 @@ def get_user_contrasena(n_ick):
     Función: retorna la contraseña del objeto usuario
     """
     user = Usuario.query.filter(Usuario.nick==n_ick).first()
+    if not user:
+        return ""
     return user.contrasena
 
 def get_user():
