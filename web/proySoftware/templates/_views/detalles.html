@@ -52,6 +52,14 @@
 							<h3>
 								Plataformas
 							</h3>
+							
+							<ul class="list-group">
+								{% for plataforma in plataformas %}
+									<li class="list-group-item">
+											{{ plataforma.nombre }}
+									</li>
+									{% endfor %}
+							</ul>
 						 </div>
 						 <div class="col-md-4">
 							 <h3>
