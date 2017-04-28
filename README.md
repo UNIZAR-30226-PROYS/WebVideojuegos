@@ -58,13 +58,16 @@ Para consultar el estado del proyecto consultar el:
  * **Post:**
  * devuelve: ruta a /detalles
 
-6. /perfilUsuario --> declarado, no implementado
+6. /perfilUsuario
+7. /perfilUsuarioVisible
+8. /deleteUser
 
 #### Listado actual de views
 1. _views/index
 2. _views/registro_login
 3. _views/detalles
-4. _views/perfilUsuario --> declarado, no implementado
+4. _views/perfilUsuario
+5. _views/perfilUsuarioVisible
 
 #### Listado de modelos(modelos de conexion Base de Datos)
 0. Usuario
