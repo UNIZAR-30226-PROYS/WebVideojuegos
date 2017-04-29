@@ -22,7 +22,6 @@ from perfilUsuario import *
 def perfilUsuarioVisible(name):
 #perfil get, devuelve la informacion del perfil
     usuario = get_user_by_name(name)
-    print name
     #action=get_action_list()
     #favorites=get_favorite_list()
     #form = UpdateList()
