@@ -16,27 +16,19 @@ from ..models import *
 from ..views import *
 from ..utils import *
 from registro import *
-#formulario para modificar imagen de perfil
-class ImgPerfilForm(Form):
-    imagen = StringField('imagen')
+from perfilUsuario import *
 
-@app.route('/perfilUsuarioVisible/', methods=['GET'])
-def perfilUsuarioVisible():
+@app.route('/perfil/<name>', methods=['GET'])
+def perfilUsuarioVisible(name):
 #perfil get, devuelve la informacion del perfil
-    '''
-    Router: solo accesible mediante el método GET de HTTP/HTTPS.
-    Descripción: perfil devuelve una template de perfilUsuario.html. Pasa los datos
-    del usuario obtenidos mediante get_user y el formulario para cambiar la imagen,
-    de perfil.
-    '''
-    data = get_user_cookie()
-    name = get_user_cookie()['nick']
-    usuario = get_user_by_name(name) 
+    usuario = get_user_by_name(name)
+    print name
     #action=get_action_list()
     #favorites=get_favorite_list()
     #form = UpdateList()
     imgForm = ImgPerfilForm()
-    return render_template("_views/perfilUsuarioVisible.html", user=usuario, logueado=data, imgForm=imgForm)
+    #return render_template("_views/perfilUsuarioVisible.html", user=usuario, logueado=data)
+    return render_template("_views/perfilUsuarioVisible.html", user=usuario)
   
   
   
