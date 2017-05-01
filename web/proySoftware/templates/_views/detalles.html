@@ -73,12 +73,12 @@
 						 </div>
 					</div>
 					<div class="col-md-9 row col-md-offset-10">
-						<form name="jugado" method="GET" action="">
+						<form name="jugado" method="POST" action="{{ url_for('jug_des',name=videojuego.titulo, select=0, noselect=1 ) }}">
 								<div class="form-group row ">	
 								<button id="user_jugado" class="btn btn-success" name="userJugado[jugado]" type="submit" >Jugado</button>
 								</div>
 						</form>
-						<form name="deseado" method="POST" action="">
+						<form name="deseado" method="POST" action="{{ url_for('jug_des',name=videojuego.titulo, select=1, noselect=0 ) }}">
 								<div class="form-group row ">	
 								<button id="user_deseado" class="btn btn-success" name="userDeseado[deseado]" type="submit" >Deseado</button>
 								</div>
