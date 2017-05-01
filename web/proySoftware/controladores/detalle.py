@@ -125,3 +125,4 @@ def puntnMedia(pk):
     vid = Videojuego.query.filter_by(id=pk).first()
     return vid.puntnMedia
 	
+

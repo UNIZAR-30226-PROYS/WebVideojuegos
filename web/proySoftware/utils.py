@@ -123,7 +123,7 @@ def insertar_new_user_vid(user_id, videojuego_id, jugado, deseado, texto):
     userVid.puntuacion = texto
     db.session.add(userVid)
     db.session.commit()
-    
+        
 def insertar_puntuacion(user_id, videojuego_id, texto):
     userVid = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_usuario == user_id, UsuarioVideojuego.id_videojuego == videojuego_id).first()
     if not userVid:
@@ -152,6 +152,4 @@ def actualizarPuntnm(videojuego_id):
     videojuego.puntnMedia = puntnM
     db.session.add(videojuego)
     db.session.commit()
-  
-  
   
