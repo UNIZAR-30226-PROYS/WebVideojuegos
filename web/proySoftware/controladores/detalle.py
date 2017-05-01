@@ -125,3 +125,13 @@ def puntnMedia(pk):
     vid = Videojuego.query.filter_by(id=pk).first()
     return vid.puntnMedia
 	
+@app.route('/<name>/<int:select>/<int:noselect>/', methods=['POST'])
+def jug_des(name, select, noselect):
+		if 'nick' in session:
+			id = get_user_id()
+			jugado_deseado(id, get_videogame_id(name), select)
+			flash('Enviado', 'success')
+		else :
+			flash('Login requerido', 'danger')
+		response = make_response(redirect(url_for('details', name=name, pk=get_videogame_id(name))))
+		return response
