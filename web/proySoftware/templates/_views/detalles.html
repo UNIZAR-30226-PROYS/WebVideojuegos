@@ -58,18 +58,32 @@
 									<li class="list-group-item">
 											{{ plataforma.nombre }}
 									</li>
-									{% endfor %}
+								{% endfor %}
 							</ul>
 						 </div>
 						 <div class="col-md-4">
 							 <h3>
 								 Desarrolladora
 							 </h3>
+							 <ul class="list-group">
+								{% for desarrolla in desarrolladora %}
+									<li class="list-group-item">
+											{{ desarolla.nombre }}
+									</li>
+								{% endfor %}
+							</ul>
 						 </div>
 						 <div class="col-md-4">
 							 <h3>
 									Géneros
 							 </h3>
+							 <ul class="list-group">
+								{% for genero in generos %}
+									<li class="list-group-item">
+											{{ genero.nombre }}
+									</li>
+								{% endfor %}
+							</ul>
 						 </div>
 					</div>
 					<div class="col-md-9 row col-md-offset-10">

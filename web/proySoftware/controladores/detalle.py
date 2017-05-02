@@ -39,6 +39,10 @@ def details(name, pk):
 		analisForm = AnalisisForm()
 		plataformas = Plataforma.query.filter(
 			PlataformaVideojuego.id_videojuego == pk, PlataformaVideojuego.id_plataforma == Plataforma.id).all()
+		desarrolladora = Desarrolladora.query.filter(
+			DesarrolladoraVideojuego.id_videojuego == pk, DesarrolladoraVideojuego.id_desarrolladora == Desarrolladora.id).all()
+		generos = Genero.query.filter(
+			GeneroVideojuego.id_videojuego == pk, GeneroVideojuego.id_genero = Genero.id).all()
 		#comentForm = ComentarioForm()
 		listAnalis = get_analisis(pk)
 		if listAnalis:
@@ -52,7 +56,9 @@ def details(name, pk):
             videojuego=videojuego,
             cover=cover,
             score=score,
-						analisForm=analisForm, listAnalis=listAnalis, plataformas=plataformas)
+						analisForm=analisForm, listAnalis=listAnalis, 
+						plataformas=plataformas, desarrolladora = desarrolladora,
+						generos = generos)
 
 
 
