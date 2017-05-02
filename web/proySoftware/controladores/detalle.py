@@ -42,7 +42,7 @@ def details(name, pk):
 		desarrolladora = Desarrolladora.query.filter(
 			DesarrolladoraVideojuego.id_videojuego == pk, DesarrolladoraVideojuego.id_desarrolladora == Desarrolladora.id).all()
 		generos = Genero.query.filter(
-			GeneroVideojuego.id_videojuego == pk, GeneroVideojuego.id_genero = Genero.id).all()
+			GeneroVideojuego.id_videojuego == pk, GeneroVideojuego.id_genero == Genero.id).all()
 		#comentForm = ComentarioForm()
 		listAnalis = get_analisis(pk)
 		if listAnalis:
