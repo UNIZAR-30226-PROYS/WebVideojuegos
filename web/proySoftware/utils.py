@@ -159,25 +159,45 @@ def insertar_puntuacion(user_id, videojuego_id, texto):
 			db.session.add(userVid)
 			db.session.commit()
 		actualizarPuntnm(videojuego_id)
+		actuPuntMedUsuario()
 		new_action("Puntuado", videojuego_id)
       
 def actualizarPuntnm(videojuego_id):
-    lista = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_videojuego == videojuego_id).all()
-    numVid = 0
-    puntnM = 0
-    if lista:
-      for i in lista:
-        numVid = numVid + 1
-        puntnM = puntnM + i.puntuacion
-    else :
-      numVid = 1
-    puntnM = puntnM / numVid
-    print puntnM
-    videojuego = Videojuego.query.filter(Videojuego.id == videojuego_id).first()
-    db.session.delete(videojuego)
-    videojuego.puntnMedia = puntnM
-    db.session.add(videojuego)
-    db.session.commit()
+		lista = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_videojuego == videojuego_id).all()
+		numVid = 0
+		puntnM = 0
+		if lista:
+			for i in lista:
+				if i.puntuacion :
+					numVid = numVid + 1
+					puntnM = puntnM + i.puntuacion
+		else :
+			numVid = 1
+		puntnM = puntnM / numVid
+		videojuego = Videojuego.query.filter(Videojuego.id == videojuego_id).first()
+		db.session.delete(videojuego)
+		videojuego.puntnMedia = puntnM
+		db.session.add(videojuego)
+		db.session.commit()
+	
+def actuPuntMedUsuario():
+		user_id = get_user_id()
+		lista = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_usuario == user_id).all()
+		user = Usuario.query.filter(Usuario.id == user_id).first()
+		puntnM = 0
+		numVid = 0
+		if lista:
+			for i in lista:
+				if i.puntuacion :
+					numVid = numVid + 1
+					puntnM = puntnM + i.puntuacion
+		else :
+			numVid = 1
+		puntnM = puntnM / numVid
+		db.session.delete(user)
+		user.puntMediaUsur = puntnM
+		db.session.add(user)
+		db.session.commit()
   
 def jugado_deseado(user_id, videojuego_id, select):
 	userVid = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_usuario == user_id, UsuarioVideojuego.id_videojuego == videojuego_id).first()
@@ -204,12 +224,11 @@ def new_action(texto, id_vid):
 		db.session.commit()
 		
 def get_actions(user_id):	
-		acciones = Acciones.query.filter(
-			Acciones.id_usuario == user_id, Videojuego.id == Acciones.id_videojuego).all()
+		acciones = Acciones.query.order_by(Acciones.fecha).filter(
+			Acciones.id_usuario == user_id, Videojuego.id == Acciones.id_videojuego).limit(20).all()
 		for ind in acciones:
 				vid = Videojuego.query.filter(Acciones.id_usuario == user_id, Videojuego.id == ind.id_videojuego).first()
 				ind.titulo = vid.titulo
-		print acciones
 		if not acciones:
 			return []
 		return acciones
