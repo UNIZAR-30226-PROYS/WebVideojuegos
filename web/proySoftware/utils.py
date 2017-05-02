@@ -90,7 +90,7 @@ def get_videogame_cover(pk):
     return picture.nombre
 
 def get_videogames_user(user_id):
-    videojuegos = session.query(Videojuego, UsuarioVideojuego).filter(
+    videojuegos = db.session.query(Videojuego, UsuarioVideojuego).filter(
         UsuarioVideojuego.id_usuario == user_id, 
         Videojuego.id == UsuarioVideojuego.id_videojuego).all()
     if not videojuegos:
