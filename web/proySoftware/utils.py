@@ -90,12 +90,15 @@ def get_videogame_cover(pk):
     return picture.nombre
 
 def get_videogames_user(user_id):
-    videojuegos = db.session.query(Videojuego, UsuarioVideojuego).filter(
-        UsuarioVideojuego.id_usuario == user_id, 
-        Videojuego.id == UsuarioVideojuego.id_videojuego).all()
-    if not videojuegos:
-        return []
-    return videojuegos
+    #videojuegos = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_usuario == user_id)
+		videojuegos = UsuarioVideojuego.query.filter(
+			UsuarioVideojuego.id_usuario == user_id, Videojuego.id == UsuarioVideojuego.id_videojuego).all()		
+		for ind in videojuegos:
+				vid = Videojuego.query.filter(UsuarioVideojuego.id_usuario == user_id, Videojuego.id == ind.id_videojuego).first()
+				ind.titulo = vid.titulo
+		if not videojuegos:
+			return []
+		return videojuegos
 
 
 def insertar_analisis(user_id, videojuego_id, texto):
@@ -185,3 +188,7 @@ def jugado_deseado(user_id, videojuego_id, select):
 	  userVid.jugado = (select + 1) % 2 
 	  db.session.add(userVid)
 	  db.session.commit() 
+
+def new_action(texto):
+		user_id = get_user_id()
+		accion = Acciones

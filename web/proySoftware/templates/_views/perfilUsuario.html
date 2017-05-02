@@ -81,42 +81,48 @@ PerfilUsuario | {{ super() }}
       </table>
     </div>
   </div>
-  {% if favorites %}
-  <div class="container">
-    <h2>Lista de deseados</h2>
-    <strong>
-      <div class="row">
-        <div class="col-md-6">Videojuego</div>
-        <div class="col-md-3">Fecha</div>
-        <div class="col-md-3">Eliminar</div>
-      </div>
-      <hr style="height:3px;border:none;color:#eee;background-color:#eee;" />
-    </strong>
-    {% for videojuego in favorites %}
-    <form action="{{ url_for('delete_from_list') }}" class="form-inline" method="POST">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="row">
-            {% if videojuego[0].picture %}
-            <div class="col-sm-2 hidden-xs"><img src="{{ videojuego[0].picture }}" alt="..." class="img-responsive"/></div>
+  {% if UsuarioVideojuegos %}
+    <div class="col-md-4">
+      <!--Jugado Deseado-->
+      <h3>
+        Jugado/Deseado
+      </h3>
+      <hr>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              Videojuego
+            </th>
+            <th>
+              Jugado/Deseado
+            </th>
+          </tr>
+        </thead>  
+        <tbody>
+          {% for videojuego in UsuarioVideojuegos %}
+          <tr>
+            {% if videojuego.deseado == 1 or videojuego.jugado == 1 %}
+            <th>
+              
+                {{ videojuego.titulo }}
+              
+            </th>
+            
+            <th>
+              {% if videojuego.deseado == 1 %}
+                Deseado
+              {% endif %}
+              {% if videojuego.jugado == 1 %}
+                Jugado
+              {% endif %}
+            </th>
             {% endif %}
-            <div class="col-sm-100x10010">
-              <h4 class="nomargin">quit</h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          quit
-        </div>
-        <div class="col-md-3">
-        quit
-          <button class="btn btn-danger btn-sm" type="submit"><i class="glyphicon glyphicon-trash"></i></button>
-        </div>
-      </div>
-      <hr style="height:3px;border:none;color:#eee;background-color:#eee;" />
-    </form>
-    {% endfor  %}
-  </div>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   {% endif %}
 </div>
 {% endblock %}
