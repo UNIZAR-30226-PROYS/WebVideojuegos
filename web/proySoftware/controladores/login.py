@@ -20,8 +20,8 @@ from registro import RegistroForm
 
 #formulario para login
 class LoginForm(Form):
-    nick = StringField('nick', validators=[NumberRange(min=4)])
-    password = PasswordField('password')
+    nick = StringField('nick', [validators.Length(min=1, max=20)])
+    password = PasswordField('password', [validators.Length(min=1, max=25)])
 #login get
 @app.route('/login/', methods=['GET'])
 def regLog():

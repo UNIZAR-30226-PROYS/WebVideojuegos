@@ -18,7 +18,7 @@ from ..utils import *
 from registro import *
 #formulario para modificar imagen de perfil
 class ImgPerfilForm(Form):
-    imagen = StringField('imagen')
+    imagen = StringField('imagen', [validators.Length(min=1, max=140)])
 
 @app.route('/perfilUsuario/', methods=['GET'])
 def perfilUsuario():
@@ -52,13 +52,14 @@ def mod_img():
     name = get_user_cookie()['nick']
     usuario = get_user_by_name(name) 
     db.session.delete(usuario)
-    if formulario.data['imagen'] != '':
+    if formulario.data['imagen'] != '' and formulario.validate():
       usuario.avatar = formulario.data['imagen']
+      flash('Imagen de perfil cambiada', 'success')
     else:
+      flash('Imagen no valida', 'danger')
       usuario.avatar = '/static/img/avatar.jpg'
     db.session.add(usuario)
     db.session.commit()
-    flash('Imagen de perfil cambiada', 'success')
     return perfilUsuario()
 
 #modificar datos de usuario [get, post]

@@ -60,13 +60,18 @@ def comentar(name, pk):
 		#cargar info de los formularios
 		formulario = AnalisisForm(request.form)
 		if 'nick' in session:
-			#obtener datos
-			id = get_user_id()
 			texto = formulario.data['comentario']
-			#crear nuevo analisis en bd
-			insertar_comentario(id, pk, texto)
-			flash('Enviado', 'success')
-			response = make_response(redirect(url_for('details', name=name, pk=get_videogame_id(name))))
+			if len(texto) < 500 :
+				#obtener datos
+				id = get_user_id()
+				
+				#crear nuevo analisis en bd
+				insertar_comentario(id, pk, texto)
+				flash('Enviado', 'success')
+				response = make_response(redirect(url_for('details', name=name, pk=get_videogame_id(name))))
+			else:
+				flash('Demasiado largo', 'danger')
+				response = make_response(redirect(url_for('details', name=name, pk=get_videogame_id(name))))
 		else :
 			flash('Login requerido', 'danger')
 			response = make_response(redirect(url_for('details', name=name, pk=pk)))
@@ -107,10 +112,14 @@ def detalles(name, pk):
 				else :
 					response = comentar(name, pk)
 			else :
-				#crear nuevo analisis en bd
-				insertar_analisis(id, pk, texto)
-				flash('Enviado', 'success')
-				response = make_response(redirect(url_for('details', name=name, pk=pk)))
+				if len(texto) < 1000 :
+					#crear nuevo analisis en bd
+					insertar_analisis(id, pk, texto)
+					flash('Enviado', 'success')
+					response = make_response(redirect(url_for('details', name=name, pk=pk)))
+				else :
+					flash('Demasiado largo', 'danger')
+					response = make_response(redirect(url_for('details', name=name, pk=get_videogame_id(name))))
 		else :
 			flash('Login requerido', 'danger')
 			response = make_response(redirect(url_for('details', name=name, pk=get_videogame_id(name))))
