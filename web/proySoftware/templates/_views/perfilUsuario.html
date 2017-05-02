@@ -62,19 +62,24 @@ PerfilUsuario | {{ super() }}
           </tr>
         </thead>
         <tbody>
-          {% for videojuego in UsuarioVideojuegos %}
+          {% for accion in acciones %}
             <tr>
+              {% if accion.accion == "Analizado" %}
               <th>
-                <% if videojuego.deseado: %>
-                  Deseado
-                <% end %>
-                <% else: %>
-                  Jugado
-                <% end %>
+               Analizado
               </th>
               <th>
-                {{ videojuego.titulo }}
+                {{ accion.titulo }}
               </th>
+              {% endif %}
+              {% if accion.accion == "Puntuado" %}
+              <th>
+               Puntuado
+              </th>
+              <th>
+                {{ accion.titulo }}
+              </th>
+              {% endif %}
             </tr>
           {% endfor %}
         </tbody>

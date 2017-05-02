@@ -36,9 +36,10 @@ def perfilUsuario():
     #favorites=get_favorite_list()
     #form = UpdateList()
     UsuarioVideojuegos = get_videogames_user(usuario.id)
+    acciones = get_actions(usuario.id)
     imgForm = ImgPerfilForm()
     return render_template("_views/perfilUsuario.html", user=usuario, logueado=data, 
-                                imgForm=imgForm, UsuarioVideojuegos = UsuarioVideojuegos)
+                                imgForm=imgForm, UsuarioVideojuegos = UsuarioVideojuegos, acciones = acciones)
   
 #modificar la imagen de perfil del usuario mediante url
 @app.route('/mod_img/', methods=['POST'])
@@ -47,8 +48,6 @@ def mod_img():
     Router: solo accesible mediante el método POST de HTTP/HTTPS.
     Descripción: mod_img devuelve una llamada a perfil para que actualice la template con los
     los cambios de información referentes a la nueva imagen de perfil.
-    Función: recupera la información del formulario de cambio de imagen de perfil y actualiza
-    la inforamción de la base de datos.
     '''
     formulario = ImgPerfilForm(request.form)
     name = get_user_cookie()['nick']

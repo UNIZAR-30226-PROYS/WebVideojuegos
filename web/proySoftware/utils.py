@@ -5,6 +5,7 @@ import json
 from flask import request
 
 from models import *
+from datetime import date
 
 def load_user(user_id):
         return Usuario.get(user_id)
@@ -102,16 +103,18 @@ def get_videogames_user(user_id):
 
 
 def insertar_analisis(user_id, videojuego_id, texto):
-    analisis = Analisis()
-    analisis.id_usuario = user_id
-    analisis.id_videojuego = videojuego_id
-    analisis.analisis = texto
-    db.session.add(analisis)
-    db.session.commit()
+		analisis = Analisis()
+		analisis.id_usuario = user_id
+		analisis.id_videojuego = videojuego_id
+		analisis.analisis = texto
+		db.session.add(analisis)
+		db.session.commit()
+		new_action("Analizado", videojuego_id)
   
 def get_analisis(videojuego_id):
-    analisis = Analisis.query.filter(Analisis.id_videojuego == videojuego_id).all()
-    return analisis
+		analisis = Analisis.query.filter(Analisis.id_videojuego == videojuego_id).all()
+		
+		return analisis
   
 def insertar_comentario(user_id, analisis_id, texto):
     comentario = Comentario()
@@ -147,15 +150,16 @@ def insertar_user_vid_2(user_id, videojuego_id, jugado, deseado):
 
 
 def insertar_puntuacion(user_id, videojuego_id, texto):
-    userVid = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_usuario == user_id, UsuarioVideojuego.id_videojuego == videojuego_id).first()
-    if not userVid:
-      insertar_new_user_vid(user_id, videojuego_id, 0, 0, texto)
-    else :
-      db.session.delete(userVid)
-      userVid.puntuacion = texto
-      db.session.add(userVid)
-      db.session.commit()
-    actualizarPuntnm(videojuego_id)
+		userVid = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_usuario == user_id, UsuarioVideojuego.id_videojuego == videojuego_id).first()
+		if not userVid:
+			insertar_new_user_vid(user_id, videojuego_id, 0, 0, texto)
+		else :
+			db.session.delete(userVid)
+			userVid.puntuacion = texto
+			db.session.add(userVid)
+			db.session.commit()
+		actualizarPuntnm(videojuego_id)
+		new_action("Puntuado", videojuego_id)
       
 def actualizarPuntnm(videojuego_id):
     lista = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_videojuego == videojuego_id).all()
@@ -187,8 +191,28 @@ def jugado_deseado(user_id, videojuego_id, select):
 	  userVid.deseado = select
 	  userVid.jugado = (select + 1) % 2 
 	  db.session.add(userVid)
-	  db.session.commit() 
+	  db.session.commit()
 
-def new_action(texto):
+def new_action(texto, id_vid):
 		user_id = get_user_id()
-		accion = Acciones
+		acciones = Acciones()
+		acciones.accion = texto
+		acciones.fecha = date.today()
+		acciones.id_usuario = user_id
+		acciones.id_videojuego = id_vid
+		db.session.add(acciones)
+		db.session.commit()
+		
+def get_actions(user_id):	
+		acciones = Acciones.query.filter(
+			Acciones.id_usuario == user_id, Videojuego.id == Acciones.id_videojuego).all()
+		for ind in acciones:
+				vid = Videojuego.query.filter(Acciones.id_usuario == user_id, Videojuego.id == ind.id_videojuego).first()
+				ind.titulo = vid.titulo
+		print acciones
+		if not acciones:
+			return []
+		return acciones
+		
+		
+		
