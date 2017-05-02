@@ -89,6 +89,15 @@ def get_videogame_cover(pk):
         return []
     return picture.nombre
 
+def get_videogames_user(user_id):
+    videojuegos = UsuarioVideojuego.query.join(Videojuego).filter(
+        UsuarioVideojuego.id_usuario == user_id, 
+        Videojuego.id == UsuarioVideojuego.id_videojuego).all()
+    if not videojuegos:
+        return []
+    return videojuegos
+
+
 def insertar_analisis(user_id, videojuego_id, texto):
     analisis = Analisis()
     analisis.id_usuario = user_id

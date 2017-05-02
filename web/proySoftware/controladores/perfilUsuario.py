@@ -35,8 +35,10 @@ def perfilUsuario():
     #action=get_action_list()
     #favorites=get_favorite_list()
     #form = UpdateList()
+    UsuarioVideojuegos = get_videogames_user(usuario.id)
     imgForm = ImgPerfilForm()
-    return render_template("_views/perfilUsuario.html", user=usuario, logueado=data, imgForm=imgForm)
+    return render_template("_views/perfilUsuario.html", user=usuario, logueado=data, 
+                                imgForm=imgForm, UsuarioVideojuegos = UsuarioVideojuegos)
   
 #modificar la imagen de perfil del usuario mediante url
 @app.route('/mod_img/', methods=['POST'])

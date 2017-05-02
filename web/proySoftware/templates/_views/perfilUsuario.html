@@ -62,7 +62,21 @@ PerfilUsuario | {{ super() }}
           </tr>
         </thead>
         <tbody>
-         
+          {% for videojuego in UsuarioVideojuegos %}
+            <tr>
+              <th>
+                <% if videojuego.deseado: %>
+                  Deseado
+                <% end %>
+                <% else: %>
+                  Jugado
+                <% end %>
+              </th>
+              <th>
+                {{ videojuego.nombre }}
+              </th>
+            </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>
