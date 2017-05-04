@@ -224,7 +224,7 @@ def new_action(texto, id_vid):
 		db.session.commit()
 		
 def get_actions(user_id):	
-		acciones = Acciones.query.order_by(Acciones.fecha).filter(
+		acciones = Acciones.query.order_by(Acciones.fecha.desc()).filter(
 			Acciones.id_usuario == user_id, Videojuego.id == Acciones.id_videojuego).limit(20).all()
 		for ind in acciones:
 				vid = Videojuego.query.filter(Acciones.id_usuario == user_id, Videojuego.id == ind.id_videojuego).first()
