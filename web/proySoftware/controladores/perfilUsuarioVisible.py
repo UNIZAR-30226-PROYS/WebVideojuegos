@@ -26,8 +26,11 @@ def perfilUsuarioVisible(name):
     #favorites=get_favorite_list()
     #form = UpdateList()
     imgForm = ImgPerfilForm()
+    acciones = get_actions(usuario.id)
+    UsuarioVideojuegos = get_videogames_user(usuario.id)
     #return render_template("_views/perfilUsuarioVisible.html", user=usuario, logueado=data)
-    return render_template("_views/perfilUsuarioVisible.html", user=usuario)
+    return render_template("_views/perfilUsuarioVisible.html", user=usuario, 
+    					UsuarioVideojuegos = UsuarioVideojuegos, acciones = acciones)
   
   
   
