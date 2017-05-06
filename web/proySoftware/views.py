@@ -15,6 +15,7 @@ from controladores.login import *
 from controladores.registro import *
 from controladores.detalle import *
 from controladores.perfilUsuarioVisible import *
+from controladores.passw import *
 
   
 class busquedaForm(Form):
