@@ -8,7 +8,7 @@ Index | {{ super() }}
 {% block content %}
 <div class="Cuarta container">
   <div>
-    <h1 class="Letter LettCab">Listado de videojuegos</h1>
+    <h1 class="Letter">Listado de videojuegos</h1>
     <form class="navbar-form navbar-left row" name="busqueda" method="POST" action="{{ url_for( 'indexBusqueda' ) }}">
       <div class="form-group">
         {{ busquedaForm.busqueda(class="form-control", id="busqueda", placeholder="titulo o género o plataforma", required="required", type="text") }}
