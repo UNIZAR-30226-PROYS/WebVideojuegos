@@ -33,5 +33,7 @@ def perfilUsuarioVisible(name):
     					UsuarioVideojuegos = UsuarioVideojuegos, acciones = acciones)
   
   
-  
+@app.route('/perfilVisID/<pk>', methods=['GET'])
+def perfilVisID(pk):
+    return make_response(redirect(url_for('perfilUsuarioVisible', name=get_user_name(pk))))
   

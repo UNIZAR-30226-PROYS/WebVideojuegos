@@ -228,7 +228,9 @@ def get_actions(user_id):
 			Acciones.id_usuario == user_id, Videojuego.id == Acciones.id_videojuego).limit(20).all()
 		for ind in acciones:
 				vid = Videojuego.query.filter(Acciones.id_usuario == user_id, Videojuego.id == ind.id_videojuego).first()
+				punt = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_usuario == user_id, UsuarioVideojuego.id_videojuego == ind.id_videojuego).first()
 				ind.titulo = vid.titulo
+				ind.puntuacion = punt.puntuacion
 		if not acciones:
 			return []
 		return acciones
