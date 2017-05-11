@@ -50,10 +50,10 @@ def cambiopassw():
 				usuario.contrasena = formulario.data['newPassword']
 				db.session.add(usuario)
 				db.session.commit()
-				return make_response(redirect(url_for('perfil')))
+				return make_response(redirect(url_for('perfilUsuario')))
 			else :
 				flash('Contrasena incorrecta', 'danger')
 				return make_response(redirect(url_for('cambiopassw')))
 		else :
-			flash('Las contrasenas no coinciden', 'danger')
+			flash('Las contrasenas no coinciden o son demasiado cortas', 'danger')
 			return make_response(redirect(url_for('cambiopassw')))

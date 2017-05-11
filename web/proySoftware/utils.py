@@ -96,7 +96,8 @@ def get_videogames_user(user_id):
 			UsuarioVideojuego.id_usuario == user_id, Videojuego.id == UsuarioVideojuego.id_videojuego).all()		
 		for ind in videojuegos:
 				vid = Videojuego.query.filter(UsuarioVideojuego.id_usuario == user_id, Videojuego.id == ind.id_videojuego).first()
-				ind.titulo = vid.titulo
+				if vid :
+					ind.titulo = vid.titulo
 		if not videojuegos:
 			return []
 		return videojuegos
@@ -229,8 +230,10 @@ def get_actions(user_id):
 		for ind in acciones:
 				vid = Videojuego.query.filter(Acciones.id_usuario == user_id, Videojuego.id == ind.id_videojuego).first()
 				punt = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_usuario == user_id, UsuarioVideojuego.id_videojuego == ind.id_videojuego).first()
-				ind.titulo = vid.titulo
-				ind.puntuacion = punt.puntuacion
+				if vid :
+					ind.titulo = vid.titulo
+					if punt :
+						ind.puntuacion = punt.puntuacion
 		if not acciones:
 			return []
 		return acciones
