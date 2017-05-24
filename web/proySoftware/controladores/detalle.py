@@ -44,7 +44,12 @@ def details(name, pk):
 		generos = Genero.query.filter(
 			GeneroVideojuego.id_videojuego == pk, GeneroVideojuego.id_genero == Genero.id).all()
 		#comentForm = ComentarioForm()
+		
 		listAnalis = get_analisis(pk)
+		if 'nick' in session:
+			jug_des = UsuarioVideojuego.query.filter(UsuarioVideojuego.id_usuario == get_user_id(), UsuarioVideojuego.id_videojuego == pk).first()
+		else:
+			jug_des = []
 		if listAnalis:
 			for analisis in listAnalis:
 					id_user = analisis.id_usuario
@@ -58,7 +63,7 @@ def details(name, pk):
             score=score,
 						analisForm=analisForm, listAnalis=listAnalis, 
 						plataformas=plataformas, desarrolladora = desarrolladora,
-						generos = generos)
+						generos = generos, jug_des=jug_des)
 
 
 
