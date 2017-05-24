@@ -43,9 +43,7 @@ Registro Login | {{ super() }}
 									<div class="form-group">
 										{{ registroForm.nick(class="form-control", id="userLogin_nick", value=saves.get('nick', ''), required="required", placeholder="Nick: 4 a 20 caracteres",  type="text") }}
 									</div>
-									<div class="form-group">
-										{{ registroForm.sexo(class="form-control", id="userLogin_sexo", value=saves.get('sexo', ''), required="required", placeholder="Sexo: 1 caracter", type="text") }}
-									</div>
+									
 									<div class="form-group">
 										{{ registroForm.password(class="form-control", id="userLogin_password", value=saves.get('password', ''), required="required", placeholder="Contraseña:8 a 25 caracteres", type="password") }}
 									</div>
