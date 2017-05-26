@@ -1,4 +1,4 @@
-0-9
+
 INSERT INTO genero_videojuego(id,id_videojuego,id_genero) VALUES (1,1);
 INSERT INTO genero_videojuego(id,id_videojuego,id_genero) VALUES (2,2);
 INSERT INTO genero_videojuego(id,id_videojuego,id_genero) VALUES (3,3);
